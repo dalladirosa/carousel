@@ -2,32 +2,351 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 247, 67%, 48%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/*.vector-2 svg path {*/
+/*  animation: draw2 20s infinite linear;*/
+/*}*/
+
+/*path {*/
+/*  animation: draw 4s infinite linear;*/
+/*  stroke-dashoffset: 209px;*/
+/*  stroke-dasharray: 409px 10000px;*/
+/*  opacity: 1;*/
+/*}*/
+
+/*@keyframes draw2 {*/
+/*  80%,*/
+/*  100% {*/
+/*    stroke-dashoffset: -1400px;*/
+/*  }*/
+/*}*/
+
+/*@keyframes draw {*/
+/*  80%,*/
+/*  100% {*/
+/*    stroke-dashoffset: -1700px;*/
+/*  }*/
+/*}*/
+
+@keyframes fade-show {
+  0% {
+    opacity: 0;
+    transform: translateX(25%);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*@keyframes fade-in-show {*/
+/*                0 { opacity: 0;  },*/
+/*              100% { opacity: 1;  }*/
+/*              }*/
+
+/* Create a container with a conic gradient background */
+/*.conic-gradient-container {*/
+/*  width: 492px;*/
+/*  height: 502px;*/
+/*  background: conic-gradient(from 5deg at 50% 50%,transparent 330deg,#98c0ef 1turn,transparent 361deg);*/
+/*  border: 1px solid #6050D7;*/
+/*}*/
+
+/*!* Additional styling to center the gradient and set proper blending modes *!*/
+/*.conic-gradient-container::before {*/
+/*  content: "";*/
+/*  display: block;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  background: conic-gradient(*/
+/*          from 0deg,*/
+/*          rgba(96, 80, 215, 0.4) 0%,*/
+/*          rgba(97, 0, 255, 0.2) 40%,*/
+/*          rgba(200, 130, 255, 0.6) 60%,*/
+/*          rgba(255, 255, 255, 1) 80%*/
+/*  );*/
+/*  mix-blend-mode: hard-light;*/
+/*  opacity: 0.5;*/
+/*}*/
+
+.gradient-border-text {
+  position: relative;
+  display: inline-block;
+  font-size: 3em;
+  font-weight: bold;
+  color: white;
+}
+
+.gradient-border-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px transparent;
+  z-index: -1;
+}
+
+.header-text {
+  font-size: 5em;
+  font-weight: bold;
+  color: black;
+  position: relative;
+  display: inline-block;
+}
+
+.header-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
+.header-text:hover::after {
+  opacity: 1;
+}
+
+.mask {
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  mask-image: url('/icons/mask.svg');
+  mask-repeat: no-repeat;
+  mask-size: 40px;
+  background: #ec4e39;
+  position: absolute;
+  color: black;
+}
+
+.glow-text {
+  font-size: 3rem;
+  text-shadow: 3px 3px 0px #fff;
+  position: relative;
+  transition: text-shadow 0.1s;
+}
+
+.mask-group,
+.mask-group * {
+  box-sizing: border-box;
+}
+.mask-group {
+  flex-shrink: 0;
+  height: 116px;
+  position: relative;
+}
+.frame-1000004493 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.frame-1000004491 {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.mask {
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  position: relative;
+}
+.ellipse-73 {
+  background: #d9d9d9;
+  border-radius: 50%;
+  opacity: 0;
+  width: 124.11px;
+  height: 124.11px;
+  position: absolute;
+  left: calc(50% - 62.06px);
+  top: calc(50% - 62.06px);
+  filter: blur(25px);
+}
+.frame-1000004492 {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.super-powers {
+  color: #f8f7ff;
+  text-align: center;
+  font-family: 'Mulish-Bold', sans-serif;
+  font-size: 46px;
+  line-height: 120%;
+  font-weight: 700;
+  position: absolute;
+  left: calc(50% - 151.19px);
+  top: calc(50% - 27.62px);
+  -webkit-text-stroke: 2px #f8f7ff;
+}
+.super-powers2 {
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    180deg,
+    rgba(96, 80, 215, 1) 0%,
+    rgba(227, 224, 251, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-family: 'Mulish-Bold', sans-serif;
+  font-size: 46px;
+  line-height: 120%;
+  font-weight: 700;
+  position: absolute;
+  left: calc(50% - 151.19px);
+  top: calc(50% - 27.62px);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.gradient-stroke {
+  font-size: 50px; /* Adjust as needed */
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 1px black; /* Fallback color */
+  position: relative;
+}
+
+.gradient-stroke::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -1;
+}
+
+.gradient-stroke::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  -webkit-text-stroke: 1px transparent; /* Transparent stroke to reveal gradient */
+  z-index: 1;
+}
+
+.test {
+  border-top: 1px solid black;
+  border-bottom: 1px solid transparent;
+  /* background-image: linear-gradient(to bottom, transparent, black),
+    linear-gradient(to bottom, transparent, black); */
+  background-size: 100% 1;
+  background-position:
+    0 100%,
+    0 0;
+  background-repeat: no-repeat;
+  background-clip: padding-box;
 }
