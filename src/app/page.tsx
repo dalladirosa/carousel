@@ -73,20 +73,21 @@ export default function Home() {
         scrollTrigger: {
           trigger: '.guard',
           start: 'top top',
-          end: '+=300%',
+          end: '+=340%',
           pin: true,
           scrub: true,
           pinSpacing: false,
           // markers: true,
         },
+        delay: 1,
       });
 
       tl.add(
         [
-          gsap.to('.door', { x: -1300, duration: 3 }),
-          gsap.to('.ventilation', { y: -1300, duration: 3 }),
-          gsap.to('.door-2', { x: 1300, duration: 3 }),
-          gsap.to('.door-key', { x: -1500, duration: 3 }),
+          gsap.to('.door', { x: -1300, duration: 4, delay: 1 }),
+          gsap.to('.ventilation', { y: -1300, duration: 4, delay: 1 }),
+          gsap.to('.door-2', { x: 1300, duration: 4, delay: 1 }),
+          gsap.to('.door-key', { x: -1500, duration: 4, delay: 1 }),
           gsap.to('.guard-line', { display: 'none' }),
         ],
         '+=0%',
