@@ -4,27 +4,16 @@ import MainNav from '@/components/main-nav';
 import { Button } from '@/components/ui/button';
 import Door from '@/icons/door.svg';
 import Door2 from '@/icons/door_2.svg';
-// import NeonBase from '@/icons/Neon Base.svg';
 import Features from '@/icons/features.svg';
 import Neon from '@/icons/neon.svg';
-import NeonGroup from '@/icons/neon_group.svg';
-// import Vector2 from '@/icons/vector2.svg';
 import Vector1 from '@/icons/vector-1.svg';
-import Vector2B from '@/icons/vector-2-b.svg';
-import Vector2 from '@/icons/vector-2.svg';
-import Vector3B from '@/icons/vector-3-b.svg';
-import Vector3 from '@/icons/vector-3.svg';
-import Vector4B from '@/icons/vector-4-b.svg';
-import Vector4 from '@/icons/vector-4.svg';
 import RequestFeatureSection from '@/modules/home/features/RequestFeatureSection';
 import VersionControlSection from '@/modules/home/features/VersionControlSection';
 import VersionHistorySection from '@/modules/home/features/VersionHistory';
 import { useGSAP } from '@gsap/react';
-import { useMouse } from '@mantine/hooks';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import Vector from '@/icons/vector.svg';
 import Image from 'next/image';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
@@ -60,15 +49,6 @@ export default function Home() {
   let maskSize = isHovered ? 40 : 40;
   useGSAP(
     () => {
-      // ScrollTrigger.create({
-      //   trigger: '.guard',
-      //   start: 'top top',
-      //   end: 'bottom top',
-      //   pin: true,
-      //   scrub: true,
-      //   pinSpacing: false,
-      //   markers: true,
-      // });
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: '.guard',
@@ -77,7 +57,6 @@ export default function Home() {
           pin: true,
           scrub: true,
           pinSpacing: false,
-          // markers: true,
         },
         delay: 1,
       });
@@ -92,88 +71,11 @@ export default function Home() {
         ],
         '+=0%',
       );
-      // gsap.to('.door', {
-      //   x: -1300, // Move the divs up out of view
-      //   duration: 5,
-      //   scrollTrigger: {
-      //     trigger: '.guard',
-      //     start: 'top top',
-      //     end: '+=100%',
-      //     pin: true,
-      //     scrub: true,
-      //     pinSpacing: false,
-      //     markers: true,
-      //   },
-      // });
-      // gsap.to('.door-2', {
-      //   x: 1300, // Move the divs up out of view
-      //   duration: 1,
-      //   scrollTrigger: {
-      //     trigger: '.guard',
-      //     start: 'top top',
-      //     end: '+=100%',
-      //     pin: true,
-      //     scrub: true,
-      //     pinSpacing: false,
-      //     markers: true,
-      //   },
-      // });
-      //
-      // ScrollTrigger.create({
-      //   trigger: element,
-      //   start: 'top top',
-      //   end: 'bottom bottom',
-      //   pin: true,
-      //   pinSpacing: false,
-      //   markers: true,
-      // });
     },
     { scope: guardRef },
   );
 
-  useLayoutEffect(() => {
-    // const tl = gsap.timeline();
-    // tl.from('.door', { x: -1300 }).from('.door-2', { x: 1300 });
-    // gsap.to('.door', {
-    //   x: -1300, // Move the divs up out of view
-    //   duration: 5,
-    //   scrollTrigger: {
-    //     trigger: '.guard',
-    //     start: 'top top',
-    //     end: 'bottom bottom',
-    //     pin: true,
-    //     scrub: true,
-    //     pinSpacing: false,
-    //     markers: true,
-    //   },
-    // });
-    // gsap.to('.door-2', {
-    //   x: 1300, // Move the divs up out of view
-    //   duration: 1,
-    //   scrollTrigger: {
-    //     markers: true,
-    //     trigger: '.guard',
-    //     start: 'top top',
-    //     end: '+=100%',
-    //     pin: true,
-    //     pinSpacing: false,
-    //     scrub: 1,
-    //   },
-    // });
-    // gsap.create('.guard', {
-    //   scrollTrigger: { trigger: '.guard', pin: true, pinSpacing: true }, // start the animation when ".box" enters the viewport (once)
-    //   end: 'left 50%+=100px',
-    //   makers: true,
-    // });
-    // gsap.utils.toArray('.door').forEach((el, i) => {
-    //   ScrollTrigger.create({
-    //     trigger: el,
-    //     start: 'top top',
-    //     pin: true,
-    //     pinSpacing: true,
-    //   });
-    // });
-  }, []);
+  useLayoutEffect(() => {}, []);
   return (
     <main
       ref={guardRef}
