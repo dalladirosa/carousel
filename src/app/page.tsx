@@ -4,9 +4,18 @@ import MainNav from '@/components/main-nav';
 import { Button } from '@/components/ui/button';
 import Door from '@/icons/door.svg';
 import Door2 from '@/icons/door_2.svg';
+import Efficiency from '@/icons/efficiency.svg';
+import Enterprise from '@/icons/enterprise.svg';
 import Features from '@/icons/features.svg';
+import FindLogos from '@/icons/find_logos.svg';
+import Functionality from '@/icons/functionality.svg';
 import Neon from '@/icons/neon.svg';
+import Play from '@/icons/play.svg';
+import Shuffle from '@/icons/shuffle.svg';
+import Support from '@/icons/support.svg';
+import TrackChanges from '@/icons/track_changes.svg';
 import Vector1 from '@/icons/vector-1.svg';
+import VersionHistory3D from '@/icons/version_history3d.svg';
 import RequestFeatureSection from '@/modules/home/features/RequestFeatureSection';
 import VersionControlSection from '@/modules/home/features/VersionControlSection';
 import VersionHistorySection from '@/modules/home/features/VersionHistory';
@@ -14,6 +23,7 @@ import { useGSAP } from '@gsap/react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Pause } from 'lucide-react';
 import Image from 'next/image';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
@@ -23,6 +33,29 @@ gsap.registerPlugin(useGSAP);
 export default function Home() {
   const guardRef = useRef(null);
 
+  const [faqs, setFaqs] = useState([
+    {
+      title:
+        'How does Carousel integrate with my current PowerPoint and Excel workflows?',
+      description:
+        "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
+      open: false,
+    },
+    {
+      title:
+        'How does Carousel integrate with my current PowerPoint and Excel workflows?',
+      description:
+        "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
+      open: false,
+    },
+    {
+      title:
+        'How does Carousel integrate with my current PowerPoint and Excel workflows?',
+      description:
+        "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
+      open: false,
+    },
+  ]);
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState<any>({
     x: null,
@@ -75,6 +108,19 @@ export default function Home() {
     { scope: guardRef },
   );
 
+  const toggleFAQ = (index: number) => {
+    setFaqs(
+      faqs.map((faq, i) => {
+        if (i === index) {
+          faq.open = !faq.open;
+        } else {
+          faq.open = false;
+        }
+
+        return faq;
+      }),
+    );
+  };
   useLayoutEffect(() => {}, []);
   return (
     <main
@@ -288,6 +334,157 @@ export default function Home() {
             <RequestFeatureSection />
           </div>
         </div>
+      </section>
+
+      <section className="container mt-20">
+        <div className="rounded-[40px] bg-gradient-to-b from-[#8479E2] to-[#6050D7] p-20">
+          <div className="flex justify-center">
+            <div className="flex items-center gap-1 rounded-xl bg-white px-2 py-1">
+              <Play />
+              <span className="text-sm font-bold text-primary-purple-70">
+                Watch this
+              </span>
+            </div>
+          </div>
+          <div className="pt-2 text-center text-5xl text-white">
+            See it in action
+          </div>
+          <div className="flex pt-12">
+            <div className="w-[440px] rounded-[40px] bg-gray-990">
+              <div className="px-10 py-10">
+                <div className="flex items-center justify-between">
+                  <div className="text-2xl text-[#8479E2]">Track Changes</div>
+                  <TrackChanges />
+                </div>
+                <div className="pb-10 text-gray-300">
+                  <div className="text-3xl">
+                    Track changes from previous drafts with one click
+                  </div>
+                  <div className="py-2 text-xl">
+                    Rewind your deck or model&apos;s history.
+                  </div>
+                  <div>
+                    Our tool tracks every edit, ensuring that your file edits
+                    are saved and documented with every keystroke.
+                  </div>
+                </div>
+              </div>
+              <div className="px-10">
+                <div className="flex items-center gap-3 pl-4">
+                  <Pause
+                    fill="#6050D7"
+                    color="#6050D7"
+                    width={18}
+                    height={18}
+                  />
+                  <Shuffle />
+                </div>
+                <div className="mx-auto h-1.5 w-[360px] rounded-t-xl bg-gray-700">
+                  <div className="h-full w-[100px] rounded-tl-xl bg-purple-60"></div>
+                </div>
+              </div>
+              <div className="border-t border-gray-800">
+                <div className="flex items-center justify-between px-10 py-3">
+                  <div className="text-2xl text-gray-200 ">Collaborate</div>
+                  <VersionHistory3D />
+                </div>
+              </div>
+              <div className="border-t border-gray-800">
+                <div className="flex items-center justify-between px-10 py-3">
+                  <div className="text-2xl text-gray-200 ">
+                    Stop Versioning Up
+                  </div>
+                  <VersionHistory3D />
+                </div>
+              </div>
+              <div className="border-t border-gray-800">
+                <div className="flex items-center justify-between px-10 py-3">
+                  <div className="text-2xl text-gray-200 ">Find Logos</div>
+                  <FindLogos />
+                </div>
+              </div>
+            </div>
+            <div className="relative place-content-center">
+              <Image
+                src={'/images/track.png'}
+                alt="track"
+                width={780}
+                height={449}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="container mt-20 rounded-3xl bg-gray-100">
+        <div className="rounded-[40px] p-20">
+          <div className="flex justify-center">
+            <div className="flex items-center gap-1 rounded-2xl border border-purple-15 bg-white px-2 py-1">
+              <Enterprise />
+              <span className="text-sm font-bold text-primary-purple-70">
+                Enterprise
+              </span>
+            </div>
+          </div>
+          <div className="pt-2 text-center text-5xl font-medium ">
+            Carousel for Enterprise
+          </div>
+        </div>
+        <div className="grid gap-8 lg:grid-cols-12 lg:px-20">
+          <div className="col-span-6 flex flex-col items-center rounded-2xl border border-[#F1F0FF] p-8">
+            <Efficiency />
+            <div className="text-2xl font-bold">Bank-level Security</div>
+            <div className="text-center">
+              Carousel can be deployed entirely on-premise, so no data ever
+              leaves your company’s ecosystem.
+            </div>
+          </div>
+          <div className="col-span-6 flex flex-col items-center rounded-2xl border border-[#F1F0FF] p-8">
+            <Efficiency />
+            <div className="text-2xl font-bold">Efficiency Guarantee</div>
+            <div className="text-center">
+              If each person on your junior team isn’t saving at least 5 hours
+              per week with Carousel, you keep the software for free.
+            </div>
+          </div>
+          <div className="col-span-6 flex flex-col items-center rounded-2xl border border-[#F1F0FF] p-8">
+            <Functionality />
+            <div className="text-2xl font-bold">Customize Functionality</div>
+            <div className="text-center">
+              Carousel can design & build custom toolkits for your team that
+              integrate with your existing data providers.
+            </div>
+          </div>
+          <div className="col-span-6 flex flex-col items-center rounded-2xl border border-[#F1F0FF] p-8">
+            <Support />
+            <div className="text-2xl font-bold">24/7 Support</div>
+            <div className="text-center">
+              Your associates & analysts are up all night making models and
+              decks. We’ll stay up with them.
+            </div>
+          </div>
+        </div>
+        <div className="mb-36 mt-10 flex justify-center">
+          <Button className="bg-gradient-to-b from-[#8479E2] to-[#6050D7] text-white">
+            Get in Touch
+          </Button>
+        </div>
+      </section>
+
+      <section>
+        {faqs.map((faq, i) => {
+          return (
+            <div
+              key={i}
+              className="overflow-hidden"
+              onClick={() => toggleFAQ(i)}
+            >
+              <div>{faq.title}</div>
+              <div className={faq.open ? 'h-auto' : 'h-0'}>
+                {faq.description}
+              </div>
+            </div>
+          );
+        })}
       </section>
     </main>
   );
