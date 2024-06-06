@@ -48,7 +48,11 @@ const config = {
           990: '#111827',
         },
         primary: {
-          purple: { 10: '#F1F0FF', 20: '#D4D0F6', 70: '#3B28CC' },
+          purple: {
+            10: '#F1F0FF',
+            20: '#D4D0F6',
+            70: '#3B28CC',
+          },
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
