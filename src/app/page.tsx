@@ -131,16 +131,11 @@ export default function Home() {
   );
 
   const toggleFAQ = (index: number) => {
-    setFaqs(
-      faqs.map((faq, i) => {
-        if (i === index) {
-          faq.open = !faq.open;
-        } else {
-          faq.open = false;
-        }
-
-        return faq;
-      }),
+    setFaqs((prevFaqs) =>
+      prevFaqs.map((faq, i) => ({
+        ...faq,
+        open: i === index ? !faq.open : false,
+      })),
     );
   };
   useLayoutEffect(() => {}, []);
@@ -517,7 +512,7 @@ export default function Home() {
               return (
                 <div
                   key={i}
-                  className="my-10 overflow-hidden"
+                  className="my-10 cursor-pointer overflow-hidden"
                   onClick={() => toggleFAQ(i)}
                 >
                   <div
