@@ -16,6 +16,7 @@ import Support from '@/icons/support.svg';
 import TrackChanges from '@/icons/track_changes.svg';
 import Vector1 from '@/icons/vector-1.svg';
 import VersionHistory3D from '@/icons/version_history3d.svg';
+import WebSecurity from '@/icons/web_security.svg';
 import RequestFeatureSection from '@/modules/home/features/RequestFeatureSection';
 import VersionControlSection from '@/modules/home/features/VersionControlSection';
 import VersionHistorySection from '@/modules/home/features/VersionHistory';
@@ -453,7 +454,7 @@ export default function Home() {
           </div>
           <div className="grid gap-8 lg:grid-cols-12 lg:px-20">
             <div className="col-span-6 flex flex-col items-center rounded-2xl border border-[#F1F0FF] p-8">
-              <Efficiency />
+              <WebSecurity />
               <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
                 Bank-level Security
               </div>
