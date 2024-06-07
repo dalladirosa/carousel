@@ -17,6 +17,7 @@ import TrackChanges from '@/icons/track_changes.svg';
 import Vector1 from '@/icons/vector-1.svg';
 import VersionHistory3D from '@/icons/version_history3d.svg';
 import WebSecurity from '@/icons/web_security.svg';
+import FeaturesSection from '@/modules/home/features';
 import RequestFeatureSection from '@/modules/home/features/RequestFeatureSection';
 import VersionControlSection from '@/modules/home/features/VersionControlSection';
 import VersionHistorySection from '@/modules/home/features/VersionHistory';
@@ -78,30 +79,7 @@ export default function Home() {
       open: false,
     },
   ]);
-  const [isHovered, setIsHovered] = useState(false);
-  const [mousePosition, setMousePosition] = useState<any>({
-    x: null,
-    y: null,
-  });
-  const containerRef = useRef<any>(null);
-  const updateMousePosition = (e: any) => {
-    const rect = containerRef.current.getBoundingClientRect();
-    setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
 
-  useEffect(() => {
-    containerRef.current.addEventListener('mousemove', updateMousePosition);
-    return () => {
-      if (containerRef.current) {
-        containerRef.current.removeEventListener(
-          'mousemove',
-          updateMousePosition,
-        );
-      }
-    };
-  }, []);
-
-  let maskSize = isHovered ? 40 : 40;
   useGSAP(
     () => {
       const tl = gsap.timeline({
@@ -138,13 +116,10 @@ export default function Home() {
       })),
     );
   };
-  useLayoutEffect(() => {}, []);
+
   return (
     <>
-      <main
-        ref={guardRef}
-        className="mb-[120px] flex min-h-screen flex-col items-center"
-      >
+      <main ref={guardRef} className="flex min-h-screen flex-col items-center">
         <MainNav />
 
         <section className="container mb-60 flex w-full flex-col items-center">
@@ -205,7 +180,7 @@ export default function Home() {
                   />
                 </div>
               </div>
-              <div className="absolute top-12 flex w-full flex-row items-center justify-center">
+              <div className="neon absolute top-12 flex w-full flex-row items-center justify-center">
                 <div className="translate-x-[15px] ">
                   <Neon />
                 </div>
@@ -252,7 +227,7 @@ export default function Home() {
                 </h1>
                 <h1 className="text-4xl font-medium text-[#111827]">
                   software{' '}
-                  <span className="bg-clip-text text-purple-40 text-transparent">
+                  <span className="bg-clip-text text-purple-40">
                     super-powers
                   </span>
                 </h1>
@@ -282,79 +257,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="container flex w-full flex-col items-center">
-          <div className="flex w-full flex-col rounded-[40px] border border-gray-200 bg-gray-100 py-[80px] shadow-[0px_4px_12px_0px_#0000000D_inset]">
-            <div className="flex flex-col items-center p-4 pt-0 text-center">
-              <div className="mx-auto w-fit overflow-auto rounded-full bg-gradient-to-br from-[#9D71FF]/30 to-[#4B78EC]/30 p-[1px]">
-                <div className="flex flex-row items-center rounded-full bg-gray-100 px-2.5 py-1 text-sm font-bold text-purple-70">
-                  <div className="mr-1 flex h-4 w-4 items-center">
-                    <Features />
-                  </div>{' '}
-                  Features
-                </div>
-              </div>
-              <div className="group relative mt-4 text-center">
-                <h1 className="text-center text-4xl font-medium text-[#111827]">
-                  <span className="inline-block translate-x-[35%] transition-all duration-500 group-hover:translate-x-0">
-                    Give your
-                  </span>{' '}
-                  <span className="inline-block translate-x-[25%] animate-fade-show text-transparent opacity-0 transition-all [text-shadow:rgb(17_17_17/0.3)_0_0_2px] group-hover:translate-x-0 group-hover:opacity-100">
-                    (least)
-                  </span>{' '}
-                  <span className="inline-block -translate-x-[47%] transition-all duration-500 group-hover:translate-x-0">
-                    favorite
-                  </span>
-                </h1>
-                <h1 className="flex flex-row text-center text-4xl font-medium text-[#111827]">
-                  software{' '}
-                  <div ref={containerRef} className="z-50 grid">
-                    <motion.div
-                      className="z-20 will-change-transform [grid-area:1/1] [mask-image:url(/icons/mask.svg)] [mask-repeat:no-repeat] [mask-size:40px]"
-                      animate={{
-                        WebkitMaskPosition: `${mousePosition.x - maskSize / 2}px ${
-                          mousePosition.y - maskSize / 2
-                        }px`,
-                        WebkitMaskSize: `${maskSize}px`,
-                      }}
-                      transition={{
-                        type: 'tween',
-                        ease: 'backOut',
-                        duration: 0.1,
-                      }}
-                    >
-                      <span className="bg-clip-text text-transparent [background-image:linear-gradient(180deg,#6050D7_0%,#E3E0FB_100%)] [grid-area:1/1] [text-stroke:1px_#fff]">
-                        {' '}
-                        super-powers
-                      </span>
-                    </motion.div>{' '}
-                    <div className="text-purple-40 [grid-area:1/1]">
-                      super-powers
-                    </div>
-                  </div>
-                </h1>
-                <p className="mt-4 font-light">
-                  We know the features you need to accelerate and unblock <br />{' '}
-                  your workflow
-                </p>
-              </div>
-            </div>
+        <FeaturesSection />
 
-            <div className="mt-[40px] grid grid-cols-2 gap-[40px] px-[80px]">
-              <VersionControlSection />
-              <div className="overflow-auto rounded-[40px] bg-gradient-to-b from-[#fff] to-[rgba(255,255,255,0)] p-[1px] [box-shadow:0px_0px_1px_0px_#0000000A,0px_2px_6px_0px_#0000000A,0px_6px_6px_0px_#0000000F]">
-                <div className="h-full w-full rounded-[40px] bg-gray-100">
-                  <div className="rounded-[40px] border-[1.5px] border-white bg-white bg-opacity-60">
-                    <img src="/icons/version_control.svg" alt="" />
-                  </div>
-                </div>
-              </div>
-              <VersionHistorySection />
-              <RequestFeatureSection />
-            </div>
-          </div>
-        </section>
-
-        <section className="mt-20">
+        <section className="container mt-20">
           <div className="rounded-[40px] bg-gradient-to-b from-[#8479E2] to-[#6050D7] pt-10 lg:p-20">
             <div className="flex justify-center">
               <div className="flex items-center gap-1 rounded-xl bg-white px-2 py-1">
@@ -433,71 +338,74 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="container mt-20 rounded-3xl bg-gray-100">
-          <div className="rounded-[40px] lg:p-20">
-            <div className="flex justify-center">
-              <div className="flex items-center gap-1 rounded-2xl border border-purple-15 bg-white px-2 py-1">
-                <Enterprise />
-                <span className="text-sm font-bold text-primary-purple-70">
-                  Enterprise
-                </span>
+
+        <section className="container mt-20 rounded-3xl">
+          <div className="rounded-[40px] bg-gradient-to-b from-[#fff] to-[#f9fafb]">
+            <div className="rounded-[40px] lg:p-20">
+              <div className="flex justify-center">
+                <div className="flex items-center gap-1 rounded-2xl border border-purple-15 bg-white px-2 py-1">
+                  <Enterprise />
+                  <span className="text-sm font-bold text-primary-purple-70">
+                    Enterprise
+                  </span>
+                </div>
+              </div>
+              <div className="pt-2 text-center text-3xl font-medium lg:text-5xl ">
+                Carousel for Enterprise
               </div>
             </div>
-            <div className="pt-2 text-center text-3xl font-medium lg:text-5xl ">
-              Carousel for Enterprise
-            </div>
-          </div>
-          <div className="grid gap-8 lg:grid-cols-12 lg:px-20">
-            <div className="col-span-6 flex flex-col items-center rounded-2xl border border-[#F1F0FF] p-8">
-              <WebSecurity />
-              <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
-                Bank-level Security
+            <div className="grid gap-10 lg:grid-cols-2 lg:px-20">
+              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-8">
+                <WebSecurity />
+                <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
+                  Bank-level Security
+                </div>
+                <div className="text-center">
+                  Carousel can be deployed entirely on-premise, so no data ever
+                  leaves your company’s ecosystem.
+                </div>
               </div>
-              <div className="text-center">
-                Carousel can be deployed entirely on-premise, so no data ever
-                leaves your company’s ecosystem.
+              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-8">
+                <Efficiency />
+                <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
+                  Efficiency Guarantee
+                </div>
+                <div className="text-center">
+                  If each person on your junior team isn’t saving at least 5
+                  hours per week with Carousel, you keep the software for free.
+                </div>
               </div>
-            </div>
-            <div className="col-span-6 flex flex-col items-center rounded-2xl border border-[#F1F0FF] p-8">
-              <Efficiency />
-              <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
-                Efficiency Guarantee
+              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-8">
+                <Functionality />
+                <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
+                  Customize Functionality
+                </div>
+                <div className="text-center">
+                  Carousel can design & build custom toolkits for your team that
+                  integrate with your existing data providers.
+                </div>
               </div>
-              <div className="text-center">
-                If each person on your junior team isn’t saving at least 5 hours
-                per week with Carousel, you keep the software for free.
-              </div>
-            </div>
-            <div className="col-span-6 flex flex-col items-center rounded-2xl border border-[#F1F0FF] p-8">
-              <Functionality />
-              <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
-                Customize Functionality
-              </div>
-              <div className="text-center">
-                Carousel can design & build custom toolkits for your team that
-                integrate with your existing data providers.
-              </div>
-            </div>
-            <div className="col-span-6 flex flex-col items-center rounded-2xl border border-[#F1F0FF] p-8">
-              <Support />
-              <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
-                24/7 Support
-              </div>
-              <div className="text-center">
-                Your associates & analysts are up all night making models and
-                decks. We’ll stay up with them.
+              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-8">
+                <Support />
+                <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
+                  24/7 Support
+                </div>
+                <div className="text-center">
+                  Your associates & analysts are up all night making models and
+                  decks. We’ll stay up with them.
+                </div>
               </div>
             </div>
-          </div>
-          <div className="mb-36 mt-10 flex justify-center">
-            <Button className="bg-gradient-to-b from-[#8479E2] to-[#6050D7] text-white">
-              Get in Touch
-            </Button>
+            <div className="flex justify-center pb-36 pt-10">
+              <Button className="bg-gradient-to-b from-[#8479E2] to-[#6050D7] text-white">
+                Get in Touch
+              </Button>
+            </div>
           </div>
         </section>
 
         <section className="container py-44 xl:max-w-4xl">
-          <div className="flex justify-center">
+          <div className="mb-2 flex justify-center">
             <div className="flex items-center gap-1 rounded-2xl border border-purple-15 bg-white px-2 py-1">
               <span className="text-sm font-bold text-primary-purple-70">
                 Need answers?
@@ -534,8 +442,9 @@ export default function Home() {
             })}
           </div>
         </section>
+
         <section className="container xl:max-w-6xl">
-          <div className="grid lg:grid-cols-12">
+          <div className="grid py-10 lg:grid-cols-12">
             <div className="col-span-9">
               <Image
                 src={'/images/open_shield.png'}
@@ -590,7 +499,7 @@ export default function Home() {
       </main>
 
       {/* footer */}
-      <section className="bg-gray-200 py-5">
+      <section className="bg-gray-200 py-6">
         <div className="container xl:max-w-6xl">
           <div className="flex flex-col justify-between text-center lg:flex-row">
             <div className="flex gap-3">

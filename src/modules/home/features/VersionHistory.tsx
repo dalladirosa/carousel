@@ -1,7 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Switch } from '@/components/ui/switch';
-import { ChevronRight, Clock3, CopyCheck, CopyPlus } from 'lucide-react';
+import { ChevronRight, CopyCheck, CopyPlus } from 'lucide-react';
 
 export default function VersionHistorySection() {
   return (
@@ -14,7 +12,7 @@ export default function VersionHistorySection() {
               <span className="font-bold text-gray-800">Version History</span>
             </div>
             <div className="mt-6 text-center transition-all duration-500 group-hover:opacity-0">
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="mb-2 text-3xl font-bold text-gray-900">
                 Stop "versioning up" constantly
               </h1>
               <p className="font-normal text-gray-990">

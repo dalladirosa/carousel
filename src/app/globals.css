@@ -75,30 +75,30 @@
   }
 }
 
-/*.vector-2 svg path {*/
-/*  animation: draw2 20s infinite linear;*/
-/*}*/
+.vector-2 svg path {
+  animation: draw2 20s infinite linear;
+}
 
-/*path {*/
-/*  animation: draw 4s infinite linear;*/
-/*  stroke-dashoffset: 209px;*/
-/*  stroke-dasharray: 409px 10000px;*/
-/*  opacity: 1;*/
-/*}*/
+.neon path {
+  animation: draw 2s infinite linear;
+  stroke-dashoffset: 209px;
+  stroke-dasharray: 409px 10000px;
+  opacity: 1;
+}
 
-/*@keyframes draw2 {*/
-/*  80%,*/
-/*  100% {*/
-/*    stroke-dashoffset: -1400px;*/
-/*  }*/
-/*}*/
+@keyframes draw2 {
+  80%,
+  100% {
+    stroke-dashoffset: -1400px;
+  }
+}
 
-/*@keyframes draw {*/
-/*  80%,*/
-/*  100% {*/
-/*    stroke-dashoffset: -1700px;*/
-/*  }*/
-/*}*/
+@keyframes draw {
+  80%,
+  100% {
+    stroke-dashoffset: -1700px;
+  }
+}
 
 @keyframes fade-show {
   0% {

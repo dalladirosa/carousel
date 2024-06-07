@@ -13,7 +13,7 @@ export default function VersionControlSection() {
               <span className="font-bold text-gray-800">Version Control</span>
             </div>
             <div className="mt-6 text-center transition-all duration-500 group-hover:opacity-0">
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="mb-2 text-3xl font-bold text-gray-900">
                 Don’t miss an update
               </h1>
               <p className="font-normal text-gray-990">
