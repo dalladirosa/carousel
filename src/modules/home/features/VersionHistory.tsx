@@ -13,7 +13,7 @@ export default function VersionHistorySection() {
             </div>
             <div className="mt-6 text-center transition-all duration-500 group-hover:opacity-0">
               <h1 className="mb-2 text-3xl font-bold text-gray-900">
-                Stop "versioning up" constantly
+                Stop &quot;versioning up&quot; constantly
               </h1>
               <p className="font-normal text-gray-990">
                 Our tool tracks every edit, ensuring that your file edits are
