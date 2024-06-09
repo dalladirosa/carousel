@@ -14,6 +14,7 @@ import Shuffle from '@/icons/shuffle.svg';
 import Support from '@/icons/support.svg';
 import TrackChanges from '@/icons/track_changes.svg';
 import Vector1 from '@/icons/vector-1.svg';
+import VectorMobile from '@/icons/vector-mobile.svg';
 import VersionHistory3D from '@/icons/version_history3d.svg';
 import WebSecurity from '@/icons/web_security.svg';
 import FeaturesSection from '@/modules/home/features';
@@ -78,27 +79,51 @@ export default function Home() {
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.guard',
-          start: 'top top',
-          end: '+=340%',
-          pin: true,
-          scrub: true,
-          pinSpacing: false,
+      const mm = gsap.matchMedia();
+      mm.add(
+        {
+          mobile: '(max-width: 640px)',
+          desktop: '(min-width: 640px)',
         },
-        delay: 1,
-      });
+        (ctx) => {
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: '.guard',
+              start: ctx.conditions?.mobile ? 'top top+=40%' : 'top top',
+              end: '+=340%',
+              pin: true,
+              scrub: true,
+              pinSpacing: false,
+            },
+            delay: 1,
+          });
 
-      tl.add(
-        [
-          gsap.to('.door', { x: -1300, duration: 4, delay: 1 }),
-          gsap.to('.ventilation', { y: -1300, duration: 4, delay: 1 }),
-          gsap.to('.door-2', { x: 1300, duration: 4, delay: 1 }),
-          gsap.to('.door-key', { x: -1500, duration: 4, delay: 1 }),
-          gsap.to('.guard-line', { display: 'none' }),
-        ],
-        '+=0%',
+          tl.add(
+            [
+              gsap.to(
+                '.door',
+                ctx.conditions?.mobile
+                  ? { x: -1300, duration: 4, delay: 0 }
+                  : { x: -1300, duration: 4, delay: 1 },
+              ),
+              gsap.to('.ventilation', { y: -1300, duration: 4, delay: 1 }),
+              gsap.to(
+                '.door-2',
+                ctx.conditions?.mobile
+                  ? { x: 1300, duration: 4, delay: 0 }
+                  : { x: 1300, duration: 4, delay: 1 },
+              ),
+              gsap.to(
+                '.door-key',
+                ctx.conditions?.mobile
+                  ? { x: 1500, duration: 4, delay: 0 }
+                  : { x: -1500, duration: 4, delay: 1 },
+              ),
+              gsap.to('.guard-line', { display: 'none' }),
+            ],
+            '+=0%',
+          );
+        },
       );
     },
     { scope: guardRef },
@@ -121,7 +146,7 @@ export default function Home() {
         <HeroSection />
 
         <section className="guard container relative mb-60 flex h-[1024px] w-full flex-row items-center ">
-          <div className="guard-line absolute left-0 right-0 top-0 z-[999] flex h-full w-full flex-col items-center justify-center">
+          <div className=" guard-line absolute left-0 right-0 top-0 z-[999] hidden h-full w-full flex-col items-center justify-center lg:flex">
             <div
               className="relative h-full w-full
                       [mask-image:url('/icons/neon_group.svg')] [mask-size:auto]"
@@ -129,8 +154,21 @@ export default function Home() {
               <div className="h-[100px] w-full translate-y-[-100%] animate-[go-down_2s_linear_infinite] bg-gradient-to-b from-transparent to-[#fff] blur-[0.3px]"></div>
             </div>
           </div>
+          <div className="guard-line absolute left-[-2%] right-[5%] top-[-31%] z-[999] flex h-full w-full flex-col items-center justify-center lg:hidden">
+            <div
+              className="relative h-full w-full
+                      [mask-image:url('/icons/neon_group_mobile.svg')] [mask-size:auto]"
+            >
+              <div className="h-[100px] w-full translate-y-[-100%] animate-[go-down_2s_linear_infinite] bg-gradient-to-b from-transparent to-[#fff] blur-[0.3px]"></div>
+            </div>
+          </div>
           <div className="ventilation absolute -left-[7px] -right-[14px] top-[6px] z-[9999] flex scale-[1.01] items-center justify-center">
-            <Vector1 />
+            <span className="hidden lg:block">
+              <Vector1 />
+            </span>
+            <span className="lg:hidden">
+              <VectorMobile />
+            </span>
             <div className="absolute left-0 right-0 top-0 z-[9999] p-4 text-center">
               <div className="mx-auto w-fit overflow-auto rounded-full bg-gradient-to-br from-[#9D71FF]/30 to-[#4B78EC]/30 p-[1px]">
                 <div className="flex flex-row items-center rounded-full bg-gray-100 px-2.5 py-1 text-sm font-bold text-purple-70">
@@ -165,20 +203,41 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="door absolute left-[3px] top-[5px] z-[1]">
-            <Door2 />
+          <div className="door absolute left-[3px] top-[5px] z-[1] ">
+            <span className="hidden lg:block">
+              <Door2 />
+            </span>
+            <span className="lg:hidden">
+              <Image
+                src={'/images/door_mobile.svg'}
+                alt="door-mobile"
+                width={197}
+                height={585}
+              />
+            </span>
           </div>
           <div className="door-2 absolute -right-[5px] top-[5px] z-[1]">
-            <Door />
+            <span className="hidden lg:block">
+              <Door />
+            </span>
+            <span className="scale-x-[-1] lg:hidden">
+              <Image
+                src={'/images/door_mobile.svg'}
+                alt="door-mobile"
+                width={197}
+                height={585}
+                className="scale-x-[-1]"
+              />
+            </span>
           </div>
-          <div className="door-key absolute left-[50.6%] top-[47%] z-[1] flex h-[308px] w-[320px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white bg-gradient-to-b from-[#FFFFFF] to-[#E6E6E6] p-2 shadow-[0_0_3.65px_0_#00000073,0px_0px_1.82px_0_#00000040]">
+          <div className="door-key absolute left-[50.6%] top-[47%] z-[1] h-[159px] w-[159px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white bg-gradient-to-b from-[#FFFFFF] to-[#E6E6E6] p-2 shadow-[0_0_3.65px_0_#00000073,0px_0px_1.82px_0_#00000040] lg:h-[308px] lg:w-[320px]">
             <div className="flex h-full w-full items-center justify-center rounded-full bg-[#F9FAFB]">
               <Image
                 src="/icons/carousel.svg"
                 alt="carousel"
                 width={240}
                 height={240}
-                className="h-[240px] w-[240px]"
+                className="h-[116px] w-[116px] lg:h-[240px] lg:w-[240px]"
               />
             </div>
           </div>
