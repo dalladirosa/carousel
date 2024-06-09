@@ -30,7 +30,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Copyright, Pause } from 'lucide-react';
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -89,7 +89,7 @@ export default function Home() {
             scrollTrigger: {
               trigger: '.guard',
               start: ctx.conditions?.mobile ? 'top top+=40%' : 'top top',
-              end: '+=340%',
+              end: '+=300%',
               pin: true,
               scrub: true,
               pinSpacing: false,
@@ -135,7 +135,7 @@ export default function Home() {
 
         <HeroSection />
 
-        <section className="guard container relative mb-60 flex h-[1024px] w-full flex-row items-center ">
+        <section className="guard container relative -z-10 mb-60 flex h-[1024px] w-full flex-row items-center ">
           <div className=" guard-line absolute left-0 right-0 top-0 z-[999] hidden h-full w-full flex-col items-center justify-center lg:flex">
             <div
               className="relative h-full w-full
