@@ -12,7 +12,7 @@ export default function VersionControlSection() {
       subHeader="Track and highlight changes across different version of your document"
     >
       <div className="transition-all duration-500 group-hover:-translate-y-24">
-        <div className="mt-6 rounded-lg bg-white p-6 [box-shadow:0px_0px_0.78px_0px_#0000000A,0px_1.57px_4.71px_0px_#0000000A]">
+        <div className="rounded-lg bg-white p-6 [box-shadow:0px_0px_0.78px_0px_#0000000A,0px_1.57px_4.71px_0px_#0000000A]">
           <p className="mb-6 text-lg font-bold text-[#000000]">
             We experienced high-growth in Q4
           </p>

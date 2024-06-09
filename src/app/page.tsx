@@ -1,6 +1,12 @@
 'use client';
 
 import MainNav from '@/components/main-nav';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import Door from '@/icons/door.svg';
 import Door2 from '@/icons/door_2.svg';
@@ -22,60 +28,53 @@ import HeroSection from '@/modules/home/hero';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronRight, Copyright, Pause } from 'lucide-react';
+import { Copyright, Pause } from 'lucide-react';
 import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
 
+const FAQS = [
+  {
+    title:
+      'How does Carousel integrate with my current PowerPoint and Excel workflows?',
+    description:
+      "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
+  },
+  {
+    title: 'Can Carousel help me manage changes when working with large teams?',
+    description:
+      "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
+  },
+  {
+    title:
+      "How does Carousel's change tracking improve over the built-in version history in Office 365?",
+    description:
+      "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
+  },
+  {
+    title:
+      'I’m working on sensitive decks & models. Is my data secure when using Carousel?',
+    description:
+      "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
+  },
+  {
+    title:
+      'How can Carousel reduce errors and improve the accuracy of our deliverables?',
+    description:
+      "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
+  },
+  {
+    title:
+      'What are the system requirements for Carousel, and is there a trial version available?',
+    description:
+      "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
+  },
+];
+
 export default function Home() {
   const guardRef = useRef(null);
-
-  const [faqs, setFaqs] = useState([
-    {
-      title:
-        'How does Carousel integrate with my current PowerPoint and Excel workflows?',
-      description:
-        "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
-      open: false,
-    },
-    {
-      title:
-        'Can Carousel help me manage changes when working with large teams?',
-      description:
-        "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
-      open: false,
-    },
-    {
-      title:
-        "How does Carousel's change tracking improve over the built-in version history in Office 365?",
-      description:
-        "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
-      open: false,
-    },
-    {
-      title:
-        'I’m working on sensitive decks & models. Is my data secure when using Carousel?',
-      description:
-        "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
-      open: false,
-    },
-    {
-      title:
-        'How can Carousel reduce errors and improve the accuracy of our deliverables?',
-      description:
-        "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
-      open: false,
-    },
-    {
-      title:
-        'What are the system requirements for Carousel, and is there a trial version available?',
-      description:
-        "Carousel effortlessly blends into your existing PowerPoint and Excel routines. Once installed, it operates quietly in the background, automatically logging every change you make as soon as you save your file. This means there's no additional steps required from you to start tracking changes.",
-      open: false,
-    },
-  ]);
 
   useGSAP(
     () => {
@@ -128,15 +127,6 @@ export default function Home() {
     },
     { scope: guardRef },
   );
-
-  const toggleFAQ = (index: number) => {
-    setFaqs((prevFaqs) =>
-      prevFaqs.map((faq, i) => ({
-        ...faq,
-        open: i === index ? !faq.open : false,
-      })),
-    );
-  };
 
   return (
     <>
@@ -341,7 +331,7 @@ export default function Home() {
               </div>
             </div>
             <div className="grid gap-10 lg:grid-cols-2 lg:px-20">
-              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-8">
+              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-10">
                 <WebSecurity />
                 <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
                   Bank-level Security
@@ -351,7 +341,7 @@ export default function Home() {
                   leaves your company’s ecosystem.
                 </div>
               </div>
-              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-8">
+              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-10">
                 <Efficiency />
                 <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
                   Efficiency Guarantee
@@ -361,7 +351,7 @@ export default function Home() {
                   hours per week with Carousel, you keep the software for free.
                 </div>
               </div>
-              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-8">
+              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-10">
                 <Functionality />
                 <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
                   Customize Functionality
@@ -371,7 +361,7 @@ export default function Home() {
                   integrate with your existing data providers.
                 </div>
               </div>
-              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-8">
+              <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-10">
                 <Support />
                 <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
                   24/7 Support
@@ -402,30 +392,16 @@ export default function Home() {
             <div className="pb-16 pt-3 text-center text-5xl font-medium">
               Frequently Asked Questions
             </div>
-            {faqs.map((faq, i) => {
-              return (
-                <div
-                  key={i}
-                  className="my-10 cursor-pointer overflow-hidden"
-                  onClick={() => toggleFAQ(i)}
-                >
-                  <div
-                    className="flex items-center justify-between
-                "
-                  >
-                    <div className="text-xl font-bold">{faq.title}</div>
-                    <ChevronRight
-                      color="#3B28CC"
-                      className={faq.open ? 'rotate-90' : ''}
-                      size={24}
-                    />
-                  </div>
-                  <div className={`${faq.open ? 'h-auto py-5' : 'h-0'}`}>
+            {FAQS.map((faq, i) => (
+              <Accordion type="single" collapsible key={i} className="my-4">
+                <AccordionItem value={`${i}`}>
+                  <AccordionTrigger>{faq.title}</AccordionTrigger>
+                  <AccordionContent className="text-gray-800">
                     {faq.description}
-                  </div>
-                </div>
-              );
-            })}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            ))}
           </div>
         </section>
 
