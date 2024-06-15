@@ -10,25 +10,18 @@ import {
 import { Button } from '@/components/ui/button';
 import Door from '@/icons/door.svg';
 import Door2 from '@/icons/door_2.svg';
-import Efficiency from '@/icons/efficiency.svg';
 import Enterprise from '@/icons/enterprise.svg';
 import Features from '@/icons/features.svg';
-import FindLogos from '@/icons/find_logos.svg';
-import Functionality from '@/icons/functionality.svg';
-import Play from '@/icons/play.svg';
-import Shuffle from '@/icons/shuffle.svg';
-import Support from '@/icons/support.svg';
-import TrackChanges from '@/icons/track_changes.svg';
 import Vector1 from '@/icons/vector-1.svg';
 import VectorMobile from '@/icons/vector-mobile.svg';
-import VersionHistory3D from '@/icons/version_history3d.svg';
 import WebSecurity from '@/icons/web_security.svg';
 import FeaturesSection from '@/modules/home/features';
+import ActionSection from '@/modules/home/features/ActionSection';
 import HeroSection from '@/modules/home/hero';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Copyright, Pause } from 'lucide-react';
+import { Copyright } from 'lucide-react';
 import Image from 'next/image';
 import React, { useRef } from 'react';
 
@@ -75,6 +68,7 @@ const FAQS = [
 
 export default function Home() {
   const guardRef = useRef(null);
+  const sectionRef = useRef(null);
 
   useGSAP(
     () => {
@@ -89,6 +83,7 @@ export default function Home() {
             scrollTrigger: {
               trigger: '.guard',
               start: ctx.conditions?.mobile ? 'top top+=40%' : 'top top',
+
               end: '+=300%',
               pin: true,
               scrub: true,
@@ -101,6 +96,7 @@ export default function Home() {
 
           tl.add(
             [
+              gsap.to('.guard', { zIndex: -1 }),
               gsap.to(
                 '.door',
                 ctx.conditions?.mobile
@@ -122,7 +118,7 @@ export default function Home() {
               ),
               gsap.to('.guard-line', { display: 'none' }),
             ],
-            '+=0%',
+            '+=100%',
           );
         },
       );
@@ -237,87 +233,13 @@ export default function Home() {
 
         <FeaturesSection />
 
-        <section className="container mt-20">
-          <div className="rounded-[40px] bg-gradient-to-b from-[#8479E2] to-[#6050D7] pt-10 lg:p-20">
-            <div className="flex justify-center">
-              <div className="flex items-center gap-1 rounded-xl bg-white px-2 py-1">
-                <Play />
-                <span className="text-sm font-bold text-primary-purple-70">
-                  Watch this
-                </span>
-              </div>
-            </div>
-            <div className="pt-2 text-center text-5xl text-white">
-              See it in action
-            </div>
-            <div className="flex pt-12">
-              <div className="rounded-[40px] bg-gray-990 lg:w-[440px]">
-                <div className="px-10 py-10">
-                  <div className="flex items-center justify-between">
-                    <div className="text-2xl text-[#8479E2]">Track Changes</div>
-                    <TrackChanges />
-                  </div>
-                  <div className="pb-10 text-gray-300">
-                    <div className="text-3xl">
-                      Track changes from previous drafts with one click
-                    </div>
-                    <div className="py-2 text-xl">
-                      Rewind your deck or model&apos;s history.
-                    </div>
-                    <div>
-                      Our tool tracks every edit, ensuring that your file edits
-                      are saved and documented with every keystroke.
-                    </div>
-                  </div>
-                </div>
-                <div className="px-10">
-                  <div className="flex items-center gap-3 pl-4">
-                    <Pause
-                      fill="#6050D7"
-                      color="#6050D7"
-                      width={18}
-                      height={18}
-                    />
-                    <Shuffle />
-                  </div>
-                  <div className="mx-auto h-1.5 w-[360px] rounded-t-xl bg-gray-700">
-                    <div className="h-full w-[100px] rounded-tl-xl bg-purple-60"></div>
-                  </div>
-                </div>
-                <div className="border-t border-gray-800">
-                  <div className="flex items-center justify-between px-10 py-3">
-                    <div className="text-2xl text-gray-200 ">Collaborate</div>
-                    <VersionHistory3D />
-                  </div>
-                </div>
-                <div className="border-t border-gray-800">
-                  <div className="flex items-center justify-between px-10 py-3">
-                    <div className="text-2xl text-gray-200 ">
-                      Stop Versioning Up
-                    </div>
-                    <VersionHistory3D />
-                  </div>
-                </div>
-                <div className="border-t border-gray-800">
-                  <div className="flex items-center justify-between px-10 py-3">
-                    <div className="text-2xl text-gray-200 ">Find Logos</div>
-                    <FindLogos />
-                  </div>
-                </div>
-              </div>
-              <div className="relative place-content-center">
-                <Image
-                  src={'/images/track.png'}
-                  alt="track"
-                  width={780}
-                  height={449}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <ActionSection />
 
-        <section className="container mt-20 rounded-3xl">
+        <section
+          className="container mt-20 rounded-3xl"
+          id="coba"
+          ref={sectionRef}
+        >
           <div className="rounded-[40px] bg-gradient-to-b from-[#fff] to-[#f9fafb]">
             <div className="rounded-[40px] lg:p-20">
               <div className="flex justify-center">
@@ -344,7 +266,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-10">
-                <Efficiency />
+                <img src="/images/Speed@2x.png" alt="" className="h-16 w-16" />
                 <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
                   Efficiency Guarantee
                 </div>
@@ -354,7 +276,11 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-10">
-                <Functionality />
+                <img
+                  src="/images/raphael_wrench@2x.png"
+                  alt=""
+                  className="h-16 w-16"
+                />
                 <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
                   Customize Functionality
                 </div>
@@ -364,7 +290,11 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex flex-col items-center rounded-2xl border border-[#F1F0FF] bg-white p-10">
-                <Support />
+                <img
+                  src="/images/7%20support@2x.png"
+                  alt=""
+                  className="h-16 w-16"
+                />
                 <div className="py-4 text-xl font-bold lg:py-0 lg:text-2xl">
                   24/7 Support
                 </div>
