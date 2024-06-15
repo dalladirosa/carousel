@@ -116,7 +116,7 @@ const ActionSection = () => {
                     {currentTime > 0 &&
                     !videoRef?.current?.paused &&
                     !videoRef?.current?.ended &&
-                    videoRef?.current?.readyState > 2 ? (
+                    (videoRef?.current?.readyState ?? 0) > 2 ? (
                       <Button
                         variant="ghost"
                         className="m-0 h-auto p-0"
@@ -179,7 +179,7 @@ const ActionSection = () => {
                     {currentTime > 0 &&
                     !videoRef?.current?.paused &&
                     !videoRef?.current?.ended &&
-                    videoRef?.current?.readyState > 2 ? (
+                    (videoRef?.current?.readyState ?? 0) > 2 ? (
                       <Button
                         variant="ghost"
                         className="m-0 h-auto p-0"
@@ -242,7 +242,7 @@ const ActionSection = () => {
                     {currentTime > 0 &&
                     !videoRef?.current?.paused &&
                     !videoRef?.current?.ended &&
-                    videoRef?.current?.readyState > 2 ? (
+                    (videoRef?.current?.readyState ?? 0) > 2 ? (
                       <Button
                         variant="ghost"
                         className="m-0 h-auto p-0"
@@ -305,7 +305,7 @@ const ActionSection = () => {
                     {currentTime > 0 &&
                     !videoRef?.current?.paused &&
                     !videoRef?.current?.ended &&
-                    videoRef?.current?.readyState > 2 ? (
+                    (videoRef?.current?.readyState ?? 0) > 2 ? (
                       <Button
                         variant="ghost"
                         className="m-0 h-auto p-0"
