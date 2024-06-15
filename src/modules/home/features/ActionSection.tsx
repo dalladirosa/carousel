@@ -37,7 +37,7 @@ const ActionSection = () => {
     }
   };
 
-  const handleProgressClick = (e) => {
+  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const progressBar = e.target;
     const newTime =
       (e.nativeEvent.offsetX / progressBar.offsetWidth) * duration;
