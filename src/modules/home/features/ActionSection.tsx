@@ -26,7 +26,7 @@ const ActionSection = () => {
     if (videoRef.current) videoRef.current.pause();
   };
 
-  const handleSeek = (time) => {
+  const handleSeek = (time: number) => {
     if (videoRef.current) videoRef.current.currentTime = time;
   };
 
