@@ -1,5 +1,6 @@
 'use client';
 
+import MainFooter from '@/components/main-footer';
 import MainNav from '@/components/main-nav';
 import {
   Accordion,
@@ -15,13 +16,12 @@ import Features from '@/icons/features.svg';
 import Vector1 from '@/icons/vector-1.svg';
 import VectorMobile from '@/icons/vector-mobile.svg';
 import WebSecurity from '@/icons/web_security.svg';
+import ActionSection from '@/modules/home/action';
 import FeaturesSection from '@/modules/home/features';
-import ActionSection from '@/modules/home/features/ActionSection';
 import HeroSection from '@/modules/home/hero';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Copyright } from 'lucide-react';
 import Image from 'next/image';
 import React, { useRef } from 'react';
 
@@ -68,59 +68,32 @@ const FAQS = [
 
 export default function Home() {
   const guardRef = useRef(null);
-  const sectionRef = useRef(null);
 
   useGSAP(
     () => {
-      const mm = gsap.matchMedia();
-      mm.add(
-        {
-          mobile: '(max-width: 640px)',
-          desktop: '(min-width: 640px)',
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.guard',
+          start: 'top top',
+          endTrigger: `#features-section`,
+          end: `bottom bottom`,
+          pin: true,
+          scrub: true,
+          pinSpacing: false,
         },
-        (ctx) => {
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: '.guard',
-              start: ctx.conditions?.mobile ? 'top top+=40%' : 'top top',
+        delay: 1,
+      });
 
-              end: '+=300%',
-              pin: true,
-              scrub: true,
-              pinSpacing: false,
-              className: '-z-10',
-            },
-
-            delay: 1,
-          });
-
-          tl.add(
-            [
-              gsap.to('.guard', { zIndex: -1 }),
-              gsap.to(
-                '.door',
-                ctx.conditions?.mobile
-                  ? { x: -1300, duration: 4, delay: 0 }
-                  : { x: -1300, duration: 4, delay: 1 },
-              ),
-              gsap.to('.ventilation', { y: -1300, duration: 4, delay: 1 }),
-              gsap.to(
-                '.door-2',
-                ctx.conditions?.mobile
-                  ? { x: 1300, duration: 4, delay: 0 }
-                  : { x: 1300, duration: 4, delay: 1 },
-              ),
-              gsap.to(
-                '.door-key',
-                ctx.conditions?.mobile
-                  ? { x: 1500, duration: 4, delay: 0 }
-                  : { x: -1500, duration: 4, delay: 1 },
-              ),
-              gsap.to('.guard-line', { display: 'none' }),
-            ],
-            '+=100%',
-          );
-        },
+      tl.add(
+        [
+          gsap.to('.guard', { zIndex: -1 }),
+          gsap.to('.door', { x: -1300, duration: 4, delay: 1 }),
+          gsap.to('.ventilation', { y: -1300, duration: 4, delay: 1 }),
+          gsap.to('.door-2', { x: 1300, duration: 4, delay: 1 }),
+          gsap.to('.door-key', { x: -1500, duration: 4, delay: 1 }),
+          gsap.to('.guard-line', { display: 'none' }),
+        ],
+        '+=100%',
       );
     },
     { scope: guardRef },
@@ -134,7 +107,7 @@ export default function Home() {
         <HeroSection />
 
         <section className="guard z-1 container relative mb-60 flex h-[1024px] w-full flex-row items-center ">
-          <div className=" guard-line absolute left-0 right-0 top-0 z-[999] hidden h-full w-full flex-col items-center justify-center lg:flex">
+          <div className="guard-line absolute left-0 right-0 top-0 z-[999] hidden h-full w-full flex-col items-center justify-center lg:flex">
             <div
               className="relative h-full w-full
                       [mask-image:url('/icons/neon_group.svg')] [mask-size:auto]"
@@ -235,11 +208,7 @@ export default function Home() {
 
         <ActionSection />
 
-        <section
-          className="container mt-20 rounded-3xl"
-          id="coba"
-          ref={sectionRef}
-        >
+        <section className="container mt-20 rounded-3xl">
           <div className="rounded-[40px] bg-gradient-to-b from-[#fff] to-[#f9fafb]">
             <div className="rounded-[40px] lg:p-20">
               <div className="flex justify-center">
@@ -336,80 +305,9 @@ export default function Home() {
             ))}
           </div>
         </section>
-
-        <section className="container xl:max-w-6xl">
-          <div className="grid py-10 lg:grid-cols-12">
-            <div className="col-span-9">
-              <Image
-                src={'/images/open_shield.png'}
-                alt="open-shield"
-                width={80}
-                height={80}
-              />
-              <div className="py-4 text-xl font-medium text-gray-990">
-                A better way to use <br /> Powerpoint & Excel
-              </div>
-              <Image
-                src={'/images/linkedin.png'}
-                alt="linkedin"
-                width={24}
-                height={24}
-              />
-            </div>
-            <div className="col-span-3 pt-5 lg:pt-0">
-              <div className="text-lg font-bold text-gray-990">Contact Us</div>
-              <div className="flex flex-col gap-3 pt-5">
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={'/images/phone.png'}
-                    alt="phone"
-                    width={36}
-                    height={36}
-                  />
-                  <div>(917) 794-5500</div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={'/images/message.png'}
-                    alt="message"
-                    width={36}
-                    height={36}
-                  />
-                  <div>daniel@usecarousel.com</div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={'/images/message.png'}
-                    alt="message"
-                    width={36}
-                    height={36}
-                  />
-                  <div>jude@usecarousel.com</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
-      {/* footer */}
-      <section className="bg-gray-200 py-6">
-        <div className="container xl:max-w-6xl">
-          <div className="flex flex-col justify-between text-center lg:flex-row">
-            <div className="flex gap-3">
-              <Copyright size={24} />
-              <div className="font-semibold text-gray-800">
-                2024 Carousel. All rights reserved.
-              </div>
-            </div>
-            <div className="font-semibold text-gray-800">
-              Based in New York City
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* footer */}
+      <MainFooter />
     </>
   );
 }

@@ -33,7 +33,10 @@ function FeaturesSection() {
   }, []);
 
   return (
-    <section className="container flex w-full flex-col items-center">
+    <section
+      id="features-section"
+      className="container flex w-full flex-col items-center"
+    >
       <div className="flex w-full flex-col rounded-[40px] border border-gray-200 bg-gray-100 py-[80px] shadow-[0px_4px_12px_0px_#0000000D_inset]">
         <div className="flex flex-col items-center p-4 pt-0 text-center">
           <div className="mx-auto w-fit overflow-auto rounded-full bg-gradient-to-br from-[#9D71FF]/30 to-[#4B78EC]/30 p-[1px]">
@@ -91,7 +94,7 @@ function FeaturesSection() {
           </div>
         </div>
 
-        <div className="mt-[40px] grid grid-cols-2 gap-[40px] px-[80px]">
+        <div className="z-50 mt-[40px] grid grid-cols-2 gap-[40px] px-[80px]">
           <VersionControlSection />
           <LogboxSection />
           <VersionHistorySection />

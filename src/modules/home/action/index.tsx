@@ -71,7 +71,7 @@ const ActionSection = () => {
   }, []);
 
   return (
-    <section className="container mt-20">
+    <section className="container mt-20" id="action-section">
       <div className="rounded-[40px] bg-gradient-to-b from-[#8479E2] to-[#6050D7] pt-10 lg:p-20">
         <div className="flex justify-center">
           <div className="flex items-center gap-1 rounded-xl bg-white px-2 py-1">
@@ -148,7 +148,7 @@ const ActionSection = () => {
                     <div
                       className="h-full rounded-tl-xl bg-purple-60"
                       style={{
-                        width: `${(currentTime / duration) * 100}%`,
+                        width: `${(currentTime / duration) * 100 || 0}%`,
                       }}
                     />
                   </div>
@@ -355,7 +355,7 @@ const ActionSection = () => {
               ref={videoRef}
               width="780"
               controls
-              className=" rounded-[2rem]"
+              className="rounded-[2rem]"
             >
               <source
                 src="/videos/file_example_WEBM_640_1_4MB.webm"
