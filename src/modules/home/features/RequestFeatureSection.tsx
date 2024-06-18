@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function RequestFeatureSection() {
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-[40px] bg-gradient-to-b from-[#fff] to-[rgba(255,255,255,0)] p-[1px]">
+    <div className="group relative flex h-[566px] w-full flex-col overflow-hidden rounded-[40px] bg-gradient-to-b from-[#fff] to-[rgba(255,255,255,0)] p-[1px] lg:h-full">
       <div className="relative h-full w-full overflow-hidden rounded-tl-[40px] rounded-tr-[40px] border border-[#E5E5E5] p-[2px]">
         <div className="absolute inset-0 bg-gradient-to-t from-[#E5E5E5] to-[#FFFFFF]"></div>
         <div className="relative h-full w-full rounded-tl-[40px] rounded-tr-[40px] bg-gray-200"></div>

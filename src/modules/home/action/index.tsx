@@ -71,7 +71,7 @@ const ActionSection = () => {
   }, []);
 
   return (
-    <section className="container mt-20" id="action-section">
+    <section className="container mt-20 px-0 lg:px-8" id="action-section">
       <div className="rounded-[40px] bg-gradient-to-b from-[#8479E2] to-[#6050D7] pt-10 lg:p-20">
         <div className="flex justify-center">
           <div className="flex items-center gap-1 rounded-xl bg-white px-2 py-1">
@@ -84,7 +84,7 @@ const ActionSection = () => {
         <div className="pt-2 text-center text-5xl text-white">
           See it in action
         </div>
-        <div className="flex flex-row items-center gap-6 pt-12">
+        <div className="flex flex-row items-center gap-6 px-6 pt-12 lg:px-0">
           <div className="rounded-[40px] bg-gray-990 lg:w-[440px]">
             <Accordion
               type="single"
@@ -347,9 +347,9 @@ const ActionSection = () => {
           </div>
 
           <div
-            className="relative h-fit place-content-center overflow-hidden rounded-[2rem] border border-gray-200 p-3
-            shadow-[0px_10.65754222869873px_21.32px_rgba(0,_0,_0,_0.03),_-1.0657542943954468px_-0.5328771471977234px_21.32px_rgba(255,_255,_255,_0.2)_inset]
-            [background:linear-gradient(206.57deg,_rgba(255,_255,_255,_0.13),_rgba(255,_255,_255,_0.03)),_linear-gradient(153.43deg,_rgba(255,_255,_255,_0.06),_rgba(255,_255,_255,_0)),_linear-gradient(180deg,_rgba(255,_255,_255,_0)_57.29%,_rgba(255,_255,_255,_0.08))]"
+            className="relative hidden h-fit place-content-center overflow-hidden rounded-[2rem] border border-gray-200 p-3 shadow-[0px_10.65754222869873px_21.32px_rgba(0,_0,_0,_0.03),_-1.0657542943954468px_-0.5328771471977234px_21.32px_rgba(255,_255,_255,_0.2)_inset]
+            [background:linear-gradient(206.57deg,_rgba(255,_255,_255,_0.13),_rgba(255,_255,_255,_0.03)),_linear-gradient(153.43deg,_rgba(255,_255,_255,_0.06),_rgba(255,_255,_255,_0)),_linear-gradient(180deg,_rgba(255,_255,_255,_0)_57.29%,_rgba(255,_255,_255,_0.08))]
+            lg:block"
           >
             <video
               ref={videoRef}

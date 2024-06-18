@@ -35,7 +35,7 @@ function FeaturesSection() {
   return (
     <section
       id="features-section"
-      className="container flex w-full flex-col items-center"
+      className="container flex w-full flex-col items-center px-0 lg:px-8"
     >
       <div className="flex w-full flex-col rounded-[40px] border border-gray-200 bg-gray-100 py-[80px] shadow-[0px_4px_12px_0px_#0000000D_inset]">
         <div className="flex flex-col items-center p-4 pt-0 text-center">
@@ -94,7 +94,7 @@ function FeaturesSection() {
           </div>
         </div>
 
-        <div className="z-50 mt-[40px] grid grid-cols-2 gap-[40px] px-[80px]">
+        <div className="z-50 mt-[40px] grid grid-cols-1 gap-6 px-6 lg:grid-cols-2 lg:gap-10 lg:px-20">
           <VersionControlSection />
           <LogboxSection />
           <VersionHistorySection />

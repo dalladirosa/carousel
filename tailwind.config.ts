@@ -35,6 +35,7 @@ const config = {
           80: '#2E1DA4',
         },
         black: {
+          30: '#E5E7EB',
           90: '#1F2937',
         },
         gray: {
