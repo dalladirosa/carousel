@@ -1,10 +1,11 @@
+import { cn } from '@/lib/utils';
 import React, { ComponentProps } from 'react';
 
 type CardProps = {
   title: string;
   imgUrl: string;
   header: string;
-  subHeader: string;
+  subHeader: React.JSX.Element;
 } & ComponentProps<'div'>;
 
 export default function Card({
@@ -13,9 +14,15 @@ export default function Card({
   header,
   subHeader,
   children,
+  className,
 }: CardProps) {
   return (
-    <div className="group overflow-auto rounded-[40px] bg-gradient-to-b from-[#fff] to-[rgba(255,255,255,0)] p-[1px] [box-shadow:0px_0px_1px_0px_#0000000A,0px_2px_6px_0px_#0000000A,0px_6px_6px_0px_#0000000F]">
+    <div
+      className={cn(
+        'group overflow-auto rounded-[40px] bg-gradient-to-b from-[#fff] to-[rgba(255,255,255,0)] p-[1px] [box-shadow:0px_0px_1px_0px_#0000000A,0px_2px_6px_0px_#0000000A,0px_6px_6px_0px_#0000000F]',
+        className,
+      )}
+    >
       <div className="h-full w-full rounded-[40px] bg-gray-100">
         <div className="h-full items-center justify-center overflow-hidden rounded-[40px] border-[1.5px] border-white bg-[#FFFFFF99] px-10 py-8">
           <div className="">

@@ -50,6 +50,7 @@ const config = {
         },
         primary: {
           purple: {
+            5: '#F8F7FF',
             10: '#F1F0FF',
             20: '#D4D0F6',
             70: '#3B28CC',

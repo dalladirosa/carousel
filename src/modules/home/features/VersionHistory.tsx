@@ -2,13 +2,23 @@ import { Button } from '@/components/ui/button';
 import Card from '@/modules/home/features/card';
 import { ChevronRight, CopyCheck, CopyPlus } from 'lucide-react';
 
-export default function VersionHistorySection() {
+export default function VersionHistorySection({
+  className,
+}: {
+  className?: string;
+}) {
   return (
     <Card
       title="Version History"
       imgUrl="/icons/version_history.svg"
       header='Stop "versioning up" constantly'
-      subHeader="Our tool tracks every edit, ensuring that your file edits are saved and documented with every keystroke"
+      subHeader={
+        <>
+          Our tool tracks every edit, ensuring that your file edits <br /> are
+          saved and documented with every keystroke
+        </>
+      }
+      className={className}
     >
       <div className="relative ml-auto w-[400px] transition-all duration-500 group-hover:-translate-y-24">
         <div className="mt-6 rounded-lg bg-white p-6 pr-0 [box-shadow:0px_0px_0.78px_0px_#0000000A,0px_1.57px_4.71px_0px_#0000000A]">

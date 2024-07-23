@@ -85,7 +85,7 @@ const ActionSection = () => {
           See it in action
         </div>
         <div className="flex flex-row items-center gap-6 px-6 pt-12 lg:px-0">
-          <div className="rounded-[40px] bg-gray-990 lg:w-[440px]">
+          <div className="rounded-[40px] bg-gray-990 lg:w-[320px]">
             <Accordion
               type="single"
               defaultValue="trackChange"
@@ -96,7 +96,7 @@ const ActionSection = () => {
                 className="border-b border-gray-800 px-10"
               >
                 <AccordionTrigger isHideIcon>
-                  <p className="text-2xl font-normal text-[#8479E2]">
+                  <p className="text-left text-2xl font-normal text-[#8479E2]">
                     Track Changes
                   </p>
                   <TrackChanges />
@@ -159,7 +159,7 @@ const ActionSection = () => {
                 className="border-b border-gray-800 px-10"
               >
                 <AccordionTrigger isHideIcon>
-                  <p className="text-2xl font-normal text-[#8479E2]">
+                  <p className="text-left text-2xl font-normal text-[#8479E2]">
                     Collaborate
                   </p>
                   <VersionHistory3D />
@@ -222,7 +222,7 @@ const ActionSection = () => {
                 className="border-b border-gray-800 px-10"
               >
                 <AccordionTrigger isHideIcon>
-                  <p className="text-2xl font-normal text-[#8479E2]">
+                  <p className="text-left text-2xl font-normal text-[#8479E2]">
                     Stop Versioning Up
                   </p>
                   <VersionHistory3D />
@@ -285,7 +285,7 @@ const ActionSection = () => {
                 className="mb-8 border-b border-gray-800 px-10"
               >
                 <AccordionTrigger isHideIcon>
-                  <p className="text-2xl font-normal text-[#8479E2]">
+                  <p className="text-left text-2xl font-normal text-[#8479E2]">
                     Find Logos
                   </p>
                   <FindLogos />

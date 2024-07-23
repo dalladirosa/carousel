@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import Features from '@/icons/features.svg';
 import LogboxSection from '@/modules/home/features/LogboxSection';
 import RequestFeatureSection from '@/modules/home/features/RequestFeatureSection';
@@ -37,7 +38,7 @@ function FeaturesSection() {
       id="features-section"
       className="container flex w-full flex-col items-center px-0 lg:px-8"
     >
-      <div className="flex w-full flex-col rounded-[40px] border border-gray-200 bg-gray-100 py-[80px] shadow-[0px_4px_12px_0px_#0000000D_inset]">
+      <div className="flex w-full flex-col items-center rounded-[40px] border border-black-30 bg-gray-100 py-[80px]">
         <div className="flex flex-col items-center p-4 pt-0 text-center">
           <div className="mx-auto w-fit overflow-auto rounded-full bg-gradient-to-br from-[#9D71FF]/30 to-[#4B78EC]/30 p-[1px]">
             <div className="flex flex-row items-center rounded-full bg-gray-100 px-2.5 py-1 text-sm font-bold text-purple-70">
@@ -97,8 +98,24 @@ function FeaturesSection() {
         <div className="z-50 mt-[40px] grid grid-cols-1 gap-6 px-6 lg:grid-cols-2 lg:gap-10 lg:px-20">
           <VersionControlSection />
           <LogboxSection />
-          <VersionHistorySection />
-          <RequestFeatureSection />
+          <div className="col-span-2 flex justify-center">
+            <VersionHistorySection className="w-fit" />
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col items-center">
+          <p className="text-2xl font-bold text-gray-990">
+            Are we missing something you want?
+          </p>
+
+          {/*TODO: Refine this button */}
+          <Button
+            className="relative mt-6 w-full border-0 p-3.5 text-lg text-gray-800 lg:w-fit"
+            variant="outline"
+          >
+            Request a Feature
+            <div className="to absolute w-full rounded-md bg-gradient-to-b from-gray-600/30 to-gray-500/30  lg:w-fit"></div>
+          </Button>
         </div>
       </div>
     </section>
