@@ -29,6 +29,7 @@ const config = {
         },
         purple: {
           15: '#E3E0FB',
+          30: '#BFB9F1',
           40: '#A9A1ED',
           60: '#6050D7',
           70: '#3B28CC',
@@ -54,6 +55,7 @@ const config = {
             10: '#F1F0FF',
             20: '#D4D0F6',
             70: '#3B28CC',
+            80: '#2E1DA4',
           },
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',

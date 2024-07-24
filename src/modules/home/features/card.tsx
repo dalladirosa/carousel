@@ -5,7 +5,7 @@ type CardProps = {
   title: string;
   imgUrl: string;
   header: string;
-  subHeader: React.JSX.Element;
+  subHeader: React.JSX.Element | string;
 } & ComponentProps<'div'>;
 
 export default function Card({

@@ -8,7 +8,19 @@ export default function HeroSection() {
   return (
     <section className="container flex w-full flex-col items-center px-0 lg:px-8">
       <div className="w-full rounded-t-[2.5rem] bg-gradient-to-b from-[#F8F7FF] to-[#FFFFFF] pb-32 pt-20 lg:pt-32">
-        <h1 className="text-center text-3xl font-normal leading-none text-[#111827] lg:text-6xl	">
+        {/* TODO: Add Animation */}
+        <div className="mb-10 flex flex-row items-center justify-center gap-2 rounded-full bg-gray-100 p-1">
+          <div className="rounded-full bg-primary-purple-10 px-4 py-1 ">
+            <p className="text-sm font-bold text-primary-purple-70">
+              For Professionals
+            </p>
+          </div>
+          <div className="rounded-full px-4 py-1 ">
+            <p className="text-sm font-bold text-gray-700">For Enterprise</p>
+          </div>
+        </div>
+
+        <h1 className="text-center text-3xl font-normal leading-none text-[#111827] lg:text-6xl">
           Now you can make decks,
           <br /> models, & memos <b className="text-purple-60">5x faster</b>
         </h1>

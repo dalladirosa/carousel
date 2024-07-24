@@ -13,6 +13,7 @@ import EnterpriseSection from '@/modules/home/enterprise';
 import FeaturesSection from '@/modules/home/features';
 import HeroSection from '@/modules/home/hero';
 import ReviewSection from '@/modules/home/review';
+import SolutionsSection from '@/modules/home/solutions';
 import React from 'react';
 
 const FAQS = [
@@ -54,6 +55,10 @@ const FAQS = [
 ];
 
 export default function Home() {
+  const [activeSection, setActiveSection] = React.useState<
+    'professional' | 'enterprise'
+  >('professional');
+
   return (
     <>
       <main className="flex min-h-screen flex-col items-center">
@@ -61,7 +66,9 @@ export default function Home() {
 
         <HeroSection />
 
-        <FeaturesSection />
+        {/*<FeaturesSection />*/}
+
+        <SolutionsSection />
 
         <ActionSection />
 
