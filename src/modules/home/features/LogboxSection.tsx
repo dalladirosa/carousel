@@ -10,7 +10,9 @@ function LogboxSection() {
       title="Logobox"
       imgUrl="/icons/logbox.svg"
       header="Find official logos with ease"
-      subHeader="Use the most up to date logos without wasting minutes on Google search"
+      subHeader={
+        'Use the most up to date logos without wasting minutes on Google search'
+      }
     >
       <div
         className="bg-gray h-fit w-full rounded-xl border border-white p-6 shadow-[0px_24px_32px_rgba(0,_0,_0,_0.08),_0px_16px_24px_rgba(0,_0,_0,_0.06),_0px_4px_8px_rgba(0,_0,_0,_0.04),_0px_0px_1px_rgba(0,_0,_0,_0.04)] transition-all duration-500
