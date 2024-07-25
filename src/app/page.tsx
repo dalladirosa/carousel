@@ -15,7 +15,7 @@ import HeroSection from '@/modules/home/hero';
 import ReviewSection from '@/modules/home/review';
 import SecuritySection from '@/modules/home/security';
 import SolutionsSection from '@/modules/home/solutions';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 const FAQS = [
   {
@@ -57,7 +57,7 @@ const FAQS = [
 
 export default function Home() {
   return (
-    <>
+    <Suspense>
       <main className="flex min-h-screen flex-col items-center gap-10">
         <MainNav />
 
@@ -103,6 +103,6 @@ export default function Home() {
       </main>
 
       <MainFooter />
-    </>
+    </Suspense>
   );
 }
