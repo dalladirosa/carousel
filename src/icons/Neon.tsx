@@ -92,7 +92,7 @@ const StatisticGray = (props: IconProps) => {
           width="491.248"
           height="501.054"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
@@ -113,7 +113,7 @@ const StatisticGray = (props: IconProps) => {
           width="475.129"
           height="484.134"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
@@ -135,7 +135,7 @@ const StatisticGray = (props: IconProps) => {
           width="465.468"
           height="476.274"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
@@ -156,7 +156,7 @@ const StatisticGray = (props: IconProps) => {
           width="465.669"
           height="476.074"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
@@ -177,7 +177,7 @@ const StatisticGray = (props: IconProps) => {
           width="491.248"
           height="501.054"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
@@ -198,7 +198,7 @@ const StatisticGray = (props: IconProps) => {
           width="475.129"
           height="484.134"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
@@ -219,7 +219,7 @@ const StatisticGray = (props: IconProps) => {
           width="465.468"
           height="476.274"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
@@ -240,7 +240,7 @@ const StatisticGray = (props: IconProps) => {
           width="465.669"
           height="476.074"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend

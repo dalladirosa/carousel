@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Enterprise from '@/icons/enterprise.svg';
 import WebSecurity from '@/icons/web_security.svg';
+import Image from 'next/image';
 import React from 'react';
 
 const EnterpriseSection = () => {
@@ -15,14 +16,28 @@ const EnterpriseSection = () => {
       title: 'ROI Guarantee',
       description:
         "If you don't see faster deliverable turnaround and increased deal capacity within 60 days, you keep the software for free.",
-      icon: <img src="/images/Speed@2x.png" alt="" className="h-16 w-16" />,
+      icon: (
+        <Image
+          src="/images/Speed@2x.png"
+          alt=""
+          width={64}
+          height={64}
+          className="h-16 w-16"
+        />
+      ),
     },
     {
       title: 'Customize Functionality',
       description:
         'Carousel can design & build custom toolkits for your team that integrate with your existing data providers.',
       icon: (
-        <img src="/images/raphael_wrench@2x.png" alt="" className="h-16 w-16" />
+        <Image
+          src="/images/raphael_wrench@2x.png"
+          alt=""
+          width={64}
+          height={64}
+          className="h-16 w-16"
+        />
       ),
     },
     {
@@ -30,13 +45,19 @@ const EnterpriseSection = () => {
       description:
         'Your associates & analysts are up all night making models and decks. We’ll stay up with them.',
       icon: (
-        <img src="/images/7%20support@2x.png" alt="" className="h-16 w-16" />
+        <Image
+          src="/images/7%20support@2x.png"
+          alt=""
+          width={64}
+          height={64}
+          className="h-16 w-16"
+        />
       ),
     },
   ];
 
   return (
-    <section className="container mt-20 rounded-3xl">
+    <section className="container rounded-3xl">
       <div className="flex w-full flex-col items-center rounded-[40px] border border-black-30 bg-gray-100 p-10">
         <div className="rounded-[40px]">
           <div className="flex justify-center">

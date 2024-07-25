@@ -54,7 +54,10 @@ const config = {
             5: '#F8F7FF',
             10: '#F1F0FF',
             20: '#D4D0F6',
+            45: '#F8F7FF',
+            50: '#8479E2',
             70: '#3B28CC',
+            60: '#6050D7',
             80: '#2E1DA4',
           },
           DEFAULT: 'hsl(var(--primary))',
@@ -108,6 +111,13 @@ const config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-show': 'fade-show 0.5s ease-out',
+      },
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        '2-356': 'repeat(2, minmax(0, 356px))',
+
+        // Complex site-specific column configuration
+        footer: '200px minmax(900px, 1fr) 100px',
       },
     },
   },

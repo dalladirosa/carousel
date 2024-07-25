@@ -74,10 +74,10 @@ const Content = ({ current }: ContentProps) => {
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: 200, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-        className="col-span-2 grid grid-cols-subgrid gap-6"
+        className="col-span-2 grid h-[556px] grid-cols-subgrid gap-6"
       >
         {FEATURES[current].map((feature, index) => (
-          <div className="rounded-3xl bg-gray-100 p-10" key={index}>
+          <div className="h-[556px] rounded-3xl bg-gray-100 p-10 " key={index}>
             <Image
               src={feature.img}
               height={329}

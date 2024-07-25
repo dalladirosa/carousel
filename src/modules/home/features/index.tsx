@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Features from '@/icons/features.svg';
 import LogboxSection from '@/modules/home/features/LogboxSection';
-import RequestFeatureSection from '@/modules/home/features/RequestFeatureSection';
 import VersionControlSection from '@/modules/home/features/VersionControlSection';
 import VersionHistorySection from '@/modules/home/features/VersionHistory';
 import { motion } from 'framer-motion';
@@ -38,7 +37,7 @@ function FeaturesSection() {
       id="features-section"
       className="container flex w-full flex-col items-center px-0 lg:px-8"
     >
-      <div className="flex w-full flex-col items-center rounded-[40px] border border-black-30 bg-gray-100 py-[80px]">
+      <div className="flex w-full flex-col items-center rounded-[40px] border border-black-30 bg-gray-100 py-10">
         <div className="flex flex-col items-center p-4 pt-0 text-center">
           <div className="mx-auto w-fit overflow-auto rounded-full bg-gradient-to-br from-[#9D71FF]/30 to-[#4B78EC]/30 p-[1px]">
             <div className="flex flex-row items-center rounded-full bg-gray-100 px-2.5 py-1 text-sm font-bold text-purple-70">
@@ -109,13 +108,15 @@ function FeaturesSection() {
           </p>
 
           {/*TODO: Refine this button */}
-          <Button
-            className="relative mt-6 w-full border-0 p-3.5 text-lg text-gray-800 lg:w-fit"
-            variant="outline"
-          >
-            Request a Feature
-            <div className="to absolute w-full rounded-md bg-gradient-to-b from-gray-600/30 to-gray-500/30  lg:w-fit"></div>
-          </Button>
+
+          <div className="to mt-6 w-full rounded-md bg-gradient-to-b from-gray-600/30 to-gray-500/30 shadow-[0_0_1px_0_#0000000A,0px_2px_6px_0px_#0000000A,0px_6px_6px_0px_#0000000F] lg:w-fit">
+            <Button
+              className="w-full border-0 p-3.5 text-lg text-gray-800 lg:w-fit"
+              variant="outline"
+            >
+              Request a Feature
+            </Button>
+          </div>
         </div>
       </div>
     </section>

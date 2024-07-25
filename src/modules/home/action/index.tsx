@@ -71,7 +71,7 @@ const ActionSection = () => {
   }, []);
 
   return (
-    <section className="container mt-20 px-0 lg:px-8" id="action-section">
+    <section className="container px-0 lg:px-8" id="action-section">
       <div className="rounded-[40px] bg-gradient-to-b from-[#8479E2] to-[#6050D7] pt-10 lg:p-20">
         <div className="flex justify-center">
           <div className="flex items-center gap-1 rounded-xl bg-white px-2 py-1">

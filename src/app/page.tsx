@@ -10,8 +10,10 @@ import {
 } from '@/components/ui/accordion';
 import ActionSection from '@/modules/home/action';
 import EnterpriseSection from '@/modules/home/enterprise';
+import FeaturesSection from '@/modules/home/features';
 import HeroSection from '@/modules/home/hero';
 import ReviewSection from '@/modules/home/review';
+import SecuritySection from '@/modules/home/security';
 import SolutionsSection from '@/modules/home/solutions';
 import React from 'react';
 
@@ -54,29 +56,27 @@ const FAQS = [
 ];
 
 export default function Home() {
-  const [activeSection, setActiveSection] = React.useState<
-    'professional' | 'enterprise'
-  >('professional');
-
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center">
+      <main className="flex min-h-screen flex-col items-center gap-10">
         <MainNav />
 
         <HeroSection />
 
-        {/*<FeaturesSection />*/}
+        <FeaturesSection />
 
         <SolutionsSection />
 
-        <ActionSection />
-
         <EnterpriseSection />
+
+        <SecuritySection />
+
+        <ActionSection />
 
         <ReviewSection />
 
         {/*TODO: Update this content*/}
-        <section className="container py-44 xl:max-w-4xl">
+        <section className="container mb-20 xl:max-w-4xl">
           <div className="mb-2 flex justify-center">
             <div className="flex items-center gap-1 rounded-2xl border border-purple-15 bg-white px-2 py-1">
               <span className="text-sm font-bold text-primary-purple-70">
@@ -85,7 +85,7 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <div className="pb-16 pt-3 text-center text-5xl font-medium">
+            <div className="mb-10 pt-3 text-center text-5xl font-medium">
               Frequently Asked Questions
             </div>
             {FAQS.map((faq, i) => (

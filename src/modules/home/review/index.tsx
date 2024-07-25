@@ -67,9 +67,9 @@ const ReviewSection = () => {
   }, [updateProgress]);
 
   return (
-    <div className="container my-10">
+    <section className="container">
       <ReviewCarousel setApi={setApi} />
-      <div className="mx-auto mt-10 flex flex-row items-center justify-center gap-1">
+      <div className="mx-auto my-10 flex flex-row items-center justify-center gap-1">
         <div className="embla__progress">
           <div
             className="embla__progress__bar"
@@ -95,7 +95,7 @@ const ReviewSection = () => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
