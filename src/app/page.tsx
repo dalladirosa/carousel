@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/accordion';
 import ActionSection from '@/modules/home/action';
 import EnterpriseSection from '@/modules/home/enterprise';
-import FeaturesSection from '@/modules/home/features';
 import HeroSection from '@/modules/home/hero';
 import ReviewSection from '@/modules/home/review';
 import SolutionsSection from '@/modules/home/solutions';

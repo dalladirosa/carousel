@@ -7,17 +7,19 @@ import Presentation from '@/icons/presentation';
 import { cn } from '@/lib/utils';
 import React, { useEffect } from 'react';
 
-type NavigationspProps = React.PropsWithChildren<{
+type NavigationsProps = React.PropsWithChildren<{
   scrollProgress: number;
   setScrollProgress: React.Dispatch<React.SetStateAction<number>>;
+  current: number;
+  setCurrent: React.Dispatch<React.SetStateAction<number>>;
 }>;
 
 const Navigations = ({
   scrollProgress,
   setScrollProgress,
-}: NavigationspProps) => {
-  const [current, setCurrent] = React.useState(0);
-
+  current,
+  setCurrent,
+}: NavigationsProps) => {
   const NAVIGATIONS = [
     {
       title: 'Investment Banking',
@@ -54,43 +56,37 @@ const Navigations = ({
     },
   ];
 
-  const updateProgress = React.useCallback(
-    (timestamp: number) => {
-      let startTime: number | null = null;
-      let animationFrameId: number;
-      const duration = 2000;
+  const updateProgress = React.useCallback(() => {
+    let startTime: number | null = null;
+    let animationFrameId: number;
+    const duration = 10000;
 
-      const animate = (time: number) => {
-        if (!startTime) startTime = time;
-        const elapsedTime = time - startTime;
-        const newProgress = Math.max(
-          -100 + (elapsedTime / duration) * 100,
-          -100,
+    const animate = (time: number) => {
+      if (!startTime) startTime = time;
+      const elapsedTime = time - startTime;
+      const newProgress = Math.max(-100 + (elapsedTime / duration) * 100, -100);
+
+      setScrollProgress(newProgress);
+
+      if (elapsedTime < duration) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setScrollProgress(-100);
+        setCurrent((prev) =>
+          prev + 1 > NAVIGATIONS.length - 1 ? 0 : prev + 1,
         );
+        startTime = null;
 
-        setScrollProgress(newProgress);
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    };
 
-        if (elapsedTime < duration) {
-          animationFrameId = requestAnimationFrame(animate);
-        } else {
-          setScrollProgress(-100);
-          setCurrent((prev) =>
-            prev + 1 > NAVIGATIONS.length - 1 ? 0 : prev + 1,
-          );
-          startTime = null;
+    animationFrameId = requestAnimationFrame(animate);
 
-          animationFrameId = requestAnimationFrame(animate);
-        }
-      };
-
-      animationFrameId = requestAnimationFrame(animate);
-
-      return () => {
-        cancelAnimationFrame(animationFrameId);
-      };
-    },
-    [current],
-  );
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [current]);
 
   const handleClick = (index: number) => {
     setScrollProgress(-100);
@@ -98,7 +94,7 @@ const Navigations = ({
   };
 
   useEffect(() => {
-    const cleanup = updateProgress(performance.now());
+    const cleanup = updateProgress();
     return cleanup;
   }, [updateProgress]);
 

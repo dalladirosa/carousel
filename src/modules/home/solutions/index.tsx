@@ -7,6 +7,7 @@ import React from 'react';
 
 const SolutionsSection = () => {
   const [scrollProgress, setScrollProgress] = React.useState(-100);
+  const [current, setCurrent] = React.useState(0);
 
   return (
     <section className="container flex w-full flex-col items-center px-0 lg:px-8">
@@ -33,8 +34,10 @@ const SolutionsSection = () => {
           <Navigations
             scrollProgress={scrollProgress}
             setScrollProgress={setScrollProgress}
+            current={current}
+            setCurrent={setCurrent}
           />
-          <Content />
+          <Content current={current} />
         </div>
       </div>
     </section>
