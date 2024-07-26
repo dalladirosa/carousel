@@ -1,12 +1,13 @@
 import { Button } from '@/components/ui/button';
-import Neon from '@/icons/Neon';
 import Windows from '@/icons/Windows';
+import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 
 export default function HeroSection() {
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   const type = searchParams.get('type') as 'professional' | 'enterprise' | null;
 
@@ -49,13 +50,39 @@ export default function HeroSection() {
         {/* TODO: Add Animation */}
         <div className="px-10 py-[52px]">
           <div className="mx-auto mb-10 flex w-fit flex-row items-center justify-center gap-2 rounded-full bg-gray-100 p-1">
-            <div className="rounded-full bg-primary-purple-10 px-4 py-1 ">
-              <p className="text-sm font-bold text-primary-purple-70">
+            <div
+              className={cn(
+                'rounded-full px-4 py-1',
+                type !== 'enterprise' && 'bg-primary-purple-10',
+              )}
+              role="button"
+              onClick={() => router.push('/')}
+            >
+              <p
+                className={cn(
+                  'text-sm font-bold',
+                  type !== 'enterprise' && 'text-primary-purple-70',
+                )}
+              >
                 For Professionals
               </p>
             </div>
-            <div className="rounded-full px-4 py-1 ">
-              <p className="text-sm font-bold text-gray-700">For Enterprise</p>
+            <div
+              className={cn(
+                'rounded-full px-4 py-1',
+                type === 'enterprise' && 'bg-primary-purple-10',
+              )}
+              role="button"
+              onClick={() => router.push('/?type=enterprise')}
+            >
+              <p
+                className={cn(
+                  'text-sm font-bold',
+                  type === 'enterprise' && 'text-primary-purple-70',
+                )}
+              >
+                For Enterprise
+              </p>
             </div>
           </div>
 
@@ -119,9 +146,9 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="neon absolute top-9 flex w-full flex-row items-center justify-center">
-            <Neon />
-          </div>
+          {/*<div className="neon absolute top-9 flex w-full flex-row items-center justify-center">*/}
+          {/*  <Neon />*/}
+          {/*</div>*/}
         </div>
       </div>
     </section>

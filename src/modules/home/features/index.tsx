@@ -4,11 +4,16 @@ import LogboxSection from '@/modules/home/features/LogboxSection';
 import VersionControlSection from '@/modules/home/features/VersionControlSection';
 import VersionHistorySection from '@/modules/home/features/VersionHistory';
 import { motion } from 'framer-motion';
+import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 
 const MASK_SIZE = 40;
 
 function FeaturesSection() {
+  const searchParams = useSearchParams();
+
+  const type = searchParams.get('type') as 'professional' | 'enterprise' | null;
+
   const containerRef = useRef<any>(null);
   const [mousePosition, setMousePosition] = useState<any>({
     x: null,
@@ -31,6 +36,8 @@ function FeaturesSection() {
       }
     };
   }, []);
+
+  if (type === 'enterprise') return null;
 
   return (
     <section

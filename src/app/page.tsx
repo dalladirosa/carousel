@@ -2,6 +2,7 @@
 
 import MainFooter from '@/components/main-footer';
 import MainNav from '@/components/main-nav';
+import ProtectedSection from '@/components/protected-section';
 import {
   Accordion,
   AccordionContent,
@@ -63,19 +64,30 @@ export default function Home() {
 
         <HeroSection />
 
-        <FeaturesSection />
+        <ProtectedSection type="professional">
+          <FeaturesSection />
+        </ProtectedSection>
 
-        <SolutionsSection />
+        <ProtectedSection type="enterprise">
+          <EnterpriseSection type="enterprise" />
+        </ProtectedSection>
 
-        <EnterpriseSection />
+        <ProtectedSection type="enterprise">
+          <SolutionsSection />
+        </ProtectedSection>
 
-        <SecuritySection />
+        <ProtectedSection type="enterprise">
+          <SecuritySection />
+        </ProtectedSection>
 
         <ActionSection />
 
+        <ProtectedSection type="professional">
+          <EnterpriseSection type="professional" />
+        </ProtectedSection>
+
         <ReviewSection />
 
-        {/*TODO: Update this content*/}
         <section className="container mb-20 xl:max-w-4xl">
           <div className="mb-2 flex justify-center">
             <div className="flex items-center gap-1 rounded-2xl border border-purple-15 bg-white px-2 py-1">
