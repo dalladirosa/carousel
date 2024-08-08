@@ -52,7 +52,7 @@ export default function HeroSection() {
           <div className="mx-auto mb-10 flex w-fit flex-row items-center justify-center gap-2 rounded-full bg-gray-100 p-1">
             <div
               className={cn(
-                'rounded-full px-4 py-1',
+                'rounded-full px-4 py-[4.5px]',
                 type !== 'enterprise' && 'bg-primary-purple-10',
               )}
               role="button"
@@ -60,7 +60,7 @@ export default function HeroSection() {
             >
               <p
                 className={cn(
-                  'text-sm font-bold',
+                  'py-[2.5px] text-base font-bold leading-normal',
                   type !== 'enterprise' && 'text-primary-purple-70',
                 )}
               >
@@ -69,7 +69,7 @@ export default function HeroSection() {
             </div>
             <div
               className={cn(
-                'rounded-full px-4 py-1',
+                'rounded-full px-4 py-[4.5px]',
                 type === 'enterprise' && 'bg-primary-purple-10',
               )}
               role="button"
@@ -77,7 +77,7 @@ export default function HeroSection() {
             >
               <p
                 className={cn(
-                  'text-sm font-bold',
+                  'py-[2.5px] text-base font-bold leading-normal',
                   type === 'enterprise' && 'text-primary-purple-70',
                 )}
               >
@@ -108,8 +108,15 @@ export default function HeroSection() {
               <Button
                 className="w-full border-0 p-3.5 text-gray-800 lg:w-fit"
                 variant="outline"
+                asChild
               >
-                Schedule a Demo
+                <a
+                  href="https://calendly.com/daniel-carouseltech/30-minute-meeting-clone"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Schedule a Demo
+                </a>
               </Button>
             </div>
           </div>

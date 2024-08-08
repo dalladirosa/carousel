@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-import Linkedin from '@/icons/linkedin';
 import { Copyright, Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
@@ -32,8 +31,15 @@ const MainFooter = () => {
               <Button
                 className="w-full border-0 p-3.5 text-gray-800 lg:w-fit"
                 variant="outline"
+                asChild
               >
-                Schedule a Demo
+                <a
+                  href="https://calendly.com/daniel-carouseltech/30-minute-meeting-clone"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Schedule a Demo
+                </a>
               </Button>
             </div>
           </div>

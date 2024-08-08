@@ -59,7 +59,7 @@ const Navigations = ({
   const updateProgress = React.useCallback(() => {
     let startTime: number | null = null;
     let animationFrameId: number;
-    const duration = 10000;
+    const duration = 5000;
 
     const animate = (time: number) => {
       if (!startTime) startTime = time;
@@ -112,7 +112,7 @@ const Navigations = ({
             <p
               className={cn(
                 'text-lg font-bold',
-                current >= i ? 'text-primary-purple-80 ' : 'text-gray-990',
+                current === i ? 'text-primary-purple-80 ' : 'text-gray-990',
               )}
             >
               {nav.title}
@@ -122,7 +122,7 @@ const Navigations = ({
                 <div
                   className={cn(
                     'w-fit rounded-2xl border px-2 py-0.5 text-xs font-bold',
-                    current >= i
+                    current === i
                       ? 'border-primary-purple-30 bg-primary-purple-10 text-primary-purple-70'
                       : 'border-gray-300 bg-gray-100 text-gray-900',
                   )}
@@ -141,7 +141,7 @@ const Navigations = ({
             <div
               className="embla__progress__bar !left-0"
               style={{
-                transform: `translateY(${current === i ? scrollProgress : current > i ? 0 : -100}%)`,
+                transform: `translateY(${current === i ? scrollProgress : -100}%)`,
               }}
             />
           </div>
