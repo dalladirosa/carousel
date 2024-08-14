@@ -20,7 +20,7 @@ export default function VersionHistorySection({
       }
       className={className}
     >
-      <div className="relative ml-auto w-[400px] transition-all duration-500 group-hover:-translate-y-24">
+      <div className="relative mx-auto w-[400px] transition-all duration-500 group-hover:-translate-y-24">
         <div className="mt-6 rounded-lg bg-white p-6 pr-0 [box-shadow:0px_0px_0.78px_0px_#0000000A,0px_1.57px_4.71px_0px_#0000000A]">
           <p className="mb-6 text-lg font-bold text-[#000000]">
             Investment Strategy

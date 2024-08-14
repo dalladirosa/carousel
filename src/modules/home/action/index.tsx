@@ -127,8 +127,8 @@ const ActionSection = () => {
         <div className="pt-2 text-center text-5xl text-white">
           See it in action
         </div>
-        <div className="flex flex-row items-stretch gap-6 px-6 pt-10 lg:px-0">
-          <div className="rounded-[40px] bg-gray-990 lg:w-[298px]">
+        <div className="flex flex-row items-stretch gap-6 px-0 pt-10">
+          <div className="w-full rounded-[40px] bg-gray-990 lg:w-[298px]">
             <Accordion
               type="single"
               defaultValue={CONTENTS[0].value}
@@ -156,7 +156,7 @@ const ActionSection = () => {
                   <AccordionContent className="flex flex-col gap-2 pb-0 text-gray-300">
                     <div className="text-lg">{content.subTitle}</div>
                     <div>{content.desc}</div>
-                    <div className="mt-6">
+                    <div className="mt-6 hidden lg:flex lg:flex-col">
                       <div className="flex items-center gap-3">
                         {currentTime > 0 &&
                         !videoRef?.current?.paused &&
@@ -205,9 +205,9 @@ const ActionSection = () => {
           </div>
 
           <div
-            className="relative hidden w-full place-content-center overflow-hidden rounded-[2rem] border border-gray-200 p-3
-            shadow-[0px_10.65754222869873px_21.32px_rgba(0,_0,_0,_0.03),_-1.0657542943954468px_-0.5328771471977234px_21.32px_rgba(255,_255,_255,_0.2)_inset]
-            [background:linear-gradient(206.57deg,_rgba(255,_255,_255,_0.13),_rgba(255,_255,_255,_0.03)),_linear-gradient(153.43deg,_rgba(255,_255,_255,_0.06),_rgba(255,_255,_255,_0)),_linear-gradient(180deg,_rgba(255,_255,_255,_0)_57.29%,_rgba(255,_255,_255,_0.08))] lg:flex"
+            className="hidden w-full place-content-center overflow-hidden rounded-[2rem] border border-gray-200 p-3 shadow-[0px_10.65754222869873px_21.32px_rgba(0,_0,_0,_0.03),_-1.0657542943954468px_-0.5328771471977234px_21.32px_rgba(255,_255,_255,_0.2)_inset]
+            [background:linear-gradient(206.57deg,_rgba(255,_255,_255,_0.13),_rgba(255,_255,_255,_0.03)),_linear-gradient(153.43deg,_rgba(255,_255,_255,_0.06),_rgba(255,_255,_255,_0)),_linear-gradient(180deg,_rgba(255,_255,_255,_0)_57.29%,_rgba(255,_255,_255,_0.08))]
+            lg:relative lg:flex"
           >
             <video
               ref={videoRef}

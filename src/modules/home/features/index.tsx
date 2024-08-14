@@ -104,9 +104,7 @@ function FeaturesSection() {
         <div className="z-50 mt-[40px] grid grid-cols-1 gap-6 px-6 lg:grid-cols-2 lg:gap-10 lg:px-20">
           <VersionControlSection />
           <LogboxSection />
-          <div className="col-span-2 flex justify-center">
-            <VersionHistorySection className="w-fit" />
-          </div>
+          <VersionHistorySection className="w-full items-center lg:col-span-2 lg:mx-auto lg:w-fit" />
         </div>
 
         <div className="mt-10 flex flex-col items-center">
