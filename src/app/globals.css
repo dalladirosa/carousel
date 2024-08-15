@@ -33,6 +33,14 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    --size: 250;
+    --duration: 12;
+    --anchor: 90;
+    --border-width: 1.5;
+    --color-from: #ffaa40;
+    --color-to: #9c40ff;
+    --delay: -9s;
   }
 
   .dark {
@@ -358,4 +366,98 @@
     0 0;
   background-repeat: no-repeat;
   background-clip: padding-box;
+}
+.test-99 {
+  mask: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
+  -webkit-mask-composite: source-in, xor !important;
+  mask-composite: intersect !important;
+  -webkit-mask-clip: padding-box, border-box !important;
+  mask-clip: padding-box, border-box !important;
+  border-radius: inherit;
+  position: absolute;
+  inset: 0;
+}
+.test-99:after {
+  --size: 250;
+  --duration: 12;
+  --anchor: 90;
+  --border-width: 1.5;
+  --color-from: #ffaa40;
+  --color-to: #9c40ff;
+  --delay: -9s;
+
+  content: var(--tw-content);
+  offset-path: rect(0 auto auto 0 round calc(var(--size) * 1px));
+  background: linear-gradient(
+    to left,
+    var(--color-from),
+    var(--color-to),
+    transparent
+  );
+  animation-delay: var(--delay);
+  animation: border-beam calc(var(--duration) * 1s) infinite linear;
+  width: calc(var(--size) * 1px);
+  aspect-ratio: 1 / 1;
+  position: absolute;
+}
+
+/*.test-99 div {*/
+/*  width: 100px;*/
+/*  height: 5px;*/
+/*  position: absolute;*/
+/*  left: 50%;*/
+/*  top: 0;*/
+/*  transform: translate(-50%, -50%);*/
+/*  background: linear-gradient(*/
+/*    149.39deg,*/
+/*    rgba(157, 113, 255, 0.3) 0%,*/
+/*    rgba(75, 120, 236, 0.3) 100%*/
+/*  );*/
+/*  animation: security-leaked-side 4s linear infinite;*/
+/*}*/
+.test-10 {
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+.test-10 div {
+  width: 300px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  top: -50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    149.39deg,
+    rgba(157, 113, 255, 0.3) 0%,
+    rgba(75, 120, 236, 0.3) 100%
+  );
+  animation: security-leaked-line 4s linear infinite;
+}
+
+@keyframes security-leaked-line {
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes border-beam {
+  100% {
+    content: var(--tw-content);
+    offset-distance: 100%;
+  }
+}
+
+@keyframes security-leaked-side {
+  25% {
+    left: 0;
+  }
+
+  75% {
+    transform: translate(-50%, -50%) rotate(0.25turn);
+  }
 }

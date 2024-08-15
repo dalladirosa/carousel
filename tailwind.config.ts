@@ -106,8 +106,22 @@ const config = {
           from: { transform: 'translateY(-100%)' },
           to: { transform: 'translateY(1000px)' },
         },
+        'border-beam': {
+          '100%': {
+            'offset-distance': '100%',
+          },
+        },
+        'border-beam-reverse': {
+          '0%': {
+            'offset-distance': '100%',
+          },
+          '100%': {
+            'offset-distance': '0',
+          },
+        },
       },
       animation: {
+        'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-show': 'fade-show 0.5s ease-out',

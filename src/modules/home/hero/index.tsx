@@ -122,40 +122,74 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="relative flex w-full flex-col items-center justify-evenly px-6 py-10 lg:px-0">
-          <div className="rounded-[2rem] border-2 border-black-30 p-2">
-            <div className="rounded-3xl border border-purple-15 bg-white px-6 py-4 shadow-[0px_6px_6px_rgba(0,_0,_0,_0.06),_0px_2px_6px_rgba(0,_0,_0,_0.04),_0px_0px_1px_rgba(0,_0,_0,_0.04)] ">
-              <p className="mb-6 text-center text-lg font-bold text-gray-600">
-                Powering teams at
-              </p>
-              <div className="grid grid-cols-2-356 items-center gap-8 lg:flex-row lg:gap-10">
-                <div className="flex flex-col items-center">
-                  <Image
-                    src="/images/capstone.png"
-                    alt="capstone"
-                    width={267}
-                    height={30}
-                  />
-                  <span className="mt-3 text-gray-600">Consulting Teams</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <Image
-                    src="/images/voi.png"
-                    alt="voi"
-                    width={96}
-                    height={30}
-                  />
-                  <span className="mt-3 text-gray-600">
-                    Corporate Finance Teams
-                  </span>
-                </div>
+        <div className="relative">
+          {/*<div className="test-10 absolute right-1/2 top-0 h-full translate-x-1/2 p-px">*/}
+          {/*  <div />*/}
+          {/*</div>*/}
+
+          {/*<div className="relative mx-auto flex w-fit flex-col items-center justify-evenly px-6 py-10 lg:px-0">*/}
+          {/*  <div className="relative rounded-[2rem] border-2 border-black-30 bg-primary-purple-45 p-2">*/}
+          {/*    <div className="rounded-3xl border border-purple-15 bg-white px-6 py-4 shadow-[0px_6px_6px_rgba(0,_0,_0,_0.06),_0px_2px_6px_rgba(0,_0,_0,_0.04),_0px_0px_1px_rgba(0,_0,_0,_0.04)] ">*/}
+          {/*      <div className="test-99"></div>*/}
+          {/*      <p className="mb-6 text-center text-lg font-bold text-gray-600">*/}
+          {/*        Powering teams at*/}
+          {/*      </p>*/}
+          {/*      <div className="grid grid-cols-2-356 items-center gap-8 lg:flex-row lg:gap-10">*/}
+          {/*        <div className="flex flex-col items-center">*/}
+          {/*          <Image*/}
+          {/*            src="/images/capstone.png"*/}
+          {/*            alt="capstone"*/}
+          {/*            width={267}*/}
+          {/*            height={30}*/}
+          {/*          />*/}
+          {/*          <span className="mt-3 text-gray-600">Consulting Teams</span>*/}
+          {/*        </div>*/}
+          {/*        <div className="flex flex-col items-center">*/}
+          {/*          <Image*/}
+          {/*            src="/images/voi.png"*/}
+          {/*            alt="voi"*/}
+          {/*            width={96}*/}
+          {/*            height={30}*/}
+          {/*          />*/}
+          {/*          <span className="mt-3 text-gray-600">*/}
+          {/*            Corporate Finance Teams*/}
+          {/*          </span>*/}
+          {/*        </div>*/}
+          {/*      </div>*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
+
+          {/*  /!*<div className="neon absolute top-9 flex w-full flex-row items-center justify-center">*!/*/}
+          {/*  /!*  <Neon />*!/*/}
+          {/*  /!*</div>*!/*/}
+          {/*</div>*/}
+        </div>
+
+        <div className="relative mx-auto mb-8 flex w-fit flex-col items-center justify-center overflow-hidden rounded-[2rem] border bg-primary-purple-45 p-2">
+          <div className="rounded-3xl border border-purple-15 bg-white px-6 py-4 ">
+            <p className="mb-6 text-center text-lg font-bold text-gray-600">
+              Powering teams at
+            </p>
+            <div className="grid grid-cols-2-356 items-center gap-8 lg:flex-row lg:gap-10">
+              <div className="flex flex-col items-center">
+                <Image
+                  src="/images/capstone.png"
+                  alt="capstone"
+                  width={267}
+                  height={30}
+                />
+                <span className="mt-3 text-gray-600">Consulting Teams</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <Image src="/images/voi.png" alt="voi" width={96} height={30} />
+                <span className="mt-3 text-gray-600">
+                  Corporate Finance Teams
+                </span>
               </div>
             </div>
           </div>
-
-          {/*<div className="neon absolute top-9 flex w-full flex-row items-center justify-center">*/}
-          {/*  <Neon />*/}
-          {/*</div>*/}
+          <div className="pointer-events-none absolute inset-0 rounded-[inherit] [border:calc(var(--border-width)*1px)_solid_transparent] ![mask-clip:padding-box,border-box] ![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(white,white)] after:absolute after:aspect-square after:w-[calc(var(--size)*1px)] after:animate-border-beam after:[animation-delay:var(--delay)] after:[background:linear-gradient(to_left,var(--color-from),var(--color-to),transparent)] after:[offset-anchor:calc(var(--anchor)*1%)_50%] after:[offset-path:rect(0_auto_auto_0_round_calc(var(--size)*1px))]"></div>
+          <div className="pointer-events-none absolute inset-0 rounded-[inherit] [border:calc(var(--border-width)*1px)_solid_transparent] ![mask-clip:padding-box,border-box] ![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(white,white)] after:absolute after:aspect-square after:w-[calc(var(--size)*1px)] after:animate-border-beam after:[animation-delay:var(--delay)] after:[background:linear-gradient(to_left,var(--color-from),var(--color-to),transparent)] after:[offset-anchor:calc(var(--anchor)*1%)_50%] after:[offset-path:rect(0_auto_auto_0_round_calc(var(--size)*1px))]"></div>
         </div>
       </div>
     </section>
