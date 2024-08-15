@@ -198,6 +198,19 @@ const ActionSection = () => {
                         />
                       </div>
                     </div>
+                    <div className="my-6 lg:hidden">
+                      <video
+                        ref={videoRef}
+                        controls
+                        className="rounded-[2rem] object-cover"
+                      >
+                        <source
+                          src="/videos/file_example_WEBM_640_1_4MB.webm"
+                          type="video/webm"
+                        />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               ))}

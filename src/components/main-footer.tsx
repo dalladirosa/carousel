@@ -6,7 +6,7 @@ import React from 'react';
 const MainFooter = () => {
   return (
     <section className="bg-gray-200">
-      <div className="container px-0 xl:max-w-6xl">
+      <div className="container px-8 lg:px-0 xl:max-w-6xl">
         <div className="grid py-10 lg:grid-cols-12">
           <div className="col-span-9">
             <div className="flex flex-row items-center">

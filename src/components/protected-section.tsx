@@ -21,11 +21,6 @@ const ProtectedSection: React.FC<ProtectedSectionProps> = ({
   const parsedType =
     urlType === '' || urlType === null ? 'professional' : 'enterprise';
 
-  if (type === 'enterprise') {
-    console.log({ type, parsedType, urlType, children });
-    console.log(parsedType === type);
-  }
-
   if (parsedType === type) return <>{children}</>;
   else return null;
 };
