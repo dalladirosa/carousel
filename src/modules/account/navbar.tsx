@@ -3,32 +3,14 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-
-const TABS = [
-  {
-    title: 'For Professionals',
-    url: '/',
-    value: 'professional',
-  },
-  {
-    title: 'For Enterprise',
-    url: '/?type=enterprise',
-    value: 'enterprise',
-  },
-];
 
 const scrolled =
   'shadow-[0px_24px_32px_0px_rgba(0,0,0,0.08),0px_16px_24px_0px_rgba(0,0,0,0.06),0px_4px_8px_0px_rgba(0,0,0,0.04),0px_0px_1px_0px_rgba(0,0,0,0.04)] px-8 py-3 rounded-full mt-6';
 
-const MainNav = () => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
+const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
-
-  console.log({ pathname });
 
   useEffect(() => {
     let rafId: number | null = null;
@@ -53,10 +35,6 @@ const MainNav = () => {
     };
   }, []);
 
-  const type = (
-    searchParams.get('type') || pathname === '/' ? 'professional' : pathname
-  ) as 'professional' | 'enterprise' | null;
-
   return (
     <header
       className={cn(
@@ -71,7 +49,7 @@ const MainNav = () => {
         )}
       >
         <div className="flex w-full flex-row items-center gap-6">
-          <div className="flex flex-row items-center">
+          <div className="mr-6 flex flex-row items-center">
             <Image
               src="/icons/carousel.svg"
               alt="carousel"
@@ -81,40 +59,9 @@ const MainNav = () => {
             />
             <h1 className="text-lg font-bold">Carousel</h1>
           </div>
-          <div className="flex w-fit flex-row items-center justify-center gap-2 rounded-full bg-gray-100 p-1">
-            {TABS.map((tab) => (
-              <Link href={tab.url} scroll={false} key={tab.title}>
-                <button
-                  className="rounded-full px-4 py-[4.5px]"
-                  role="button"
-                  style={{
-                    transformStyle: 'preserve-3d',
-                  }}
-                >
-                  {type === tab.value && (
-                    <motion.div
-                      layoutId="clickedbutton"
-                      transition={{
-                        type: 'spring',
-                        bounce: 0.3,
-                        duration: 0.6,
-                      }}
-                      className="absolute inset-0 rounded-full bg-primary-purple-10"
-                    />
-                  )}
-                  <motion.p
-                    animate={{
-                      color: type === tab.value ? '#3B28CC' : '#1F2937',
-                    }}
-                    transition={{ duration: 0 }}
-                    className="relative z-10 block py-[2.5px] text-base font-bold leading-normal"
-                  >
-                    {tab.title}
-                  </motion.p>
-                </button>
-              </Link>
-            ))}
-          </div>
+          <Link href="/" className="text-sm font-bold text-primary-purple-70">
+            Home
+          </Link>
         </div>
         <div className="flex w-full flex-row items-center justify-end gap-6 transition-all">
           <div>
@@ -140,15 +87,9 @@ const MainNav = () => {
             </a>
           </div>
           <div>
-            {type === 'enterprise' && isSticky && (
-              <Button className="mr-3 transition-all">Download</Button>
-            )}
             <Button variant="outline" className="transition-all">
-              Sign In
+              Sign Out
             </Button>
-            {type === 'professional' && isSticky && (
-              <Button className="ml-3 transition-all">Schedule a Demo</Button>
-            )}
           </div>
         </div>
       </nav>
@@ -156,4 +97,4 @@ const MainNav = () => {
   );
 };
 
-export default MainNav;
+export default Navbar;

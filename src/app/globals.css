@@ -367,6 +367,80 @@
   background-repeat: no-repeat;
   background-clip: padding-box;
 }
+
+/*.animate-glow {*/
+/*  stroke-dasharray: 16 984;*/
+/*  stroke-dashoffset: 0;*/
+/*  animation: dash 5s linear infinite;*/
+/*}*/
+
+#grad stop {
+  /*animation: glowMove 3s linear infinite;*/
+}
+
+#grad stop:nth-child(2) {
+  animation-delay: -1.5s;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes glowMove {
+  0% {
+    stop-color: #00ff00;
+    stop-opacity: 0;
+  }
+  50% {
+    stop-color: #00ff00;
+    stop-opacity: 1;
+  }
+  100% {
+    stop-color: #00ff00;
+    stop-opacity: 0;
+  }
+}
+
+.wrapped-box-container {
+  position: relative;
+  display: inline-block;
+}
+
+.svg-wrapper {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  z-index: 1;
+}
+
+.animated-rectangle {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2;
+  mask: url(#rectangleMask);
+}
+
+.box {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+@keyframes drawRectangle {
+  0% {
+    mask-position: 0% 0%;
+  }
+  100% {
+    mask-position: 200% 0%;
+  }
+}
+
+.animated-rectangle {
+  animation: drawRectangle 2s linear infinite;
+}
 .test-99 {
   mask: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
   -webkit-mask-composite: source-in, xor !important;
@@ -422,9 +496,12 @@
   mask-composite: xor;
   mask-composite: exclude;
   padding: 1px;
+  width: 300px;
+  height: 50px;
+  animation: security-leaked-line 4s linear infinite;
 }
 
-.test-10 div {
+.test-10:after {
   width: 300px;
   height: 50px;
   position: absolute;
@@ -438,6 +515,10 @@
   );
   animation: security-leaked-line 4s linear infinite;
 }
+
+/*.test-10 div {*/
+
+/*}*/
 
 @keyframes security-leaked-line {
   100% {

@@ -65,13 +65,13 @@ const EnterpriseSection = ({ type }: EnterpriseSectionProps) => {
   ];
 
   return (
-    <section className="container rounded-3xl">
+    <section className="container rounded-3xl p-0 lg:px-8">
       <div
         className={cn(
-          'flex w-full flex-col items-center rounded-[40px] p-10',
+          'flex w-full flex-col items-center rounded-[40px] p-6 lg:p-10',
           type === 'enterprise'
-            ? 'border-0 bg-primary-purple-5'
-            : 'border border-black-30 bg-gray-100',
+            ? 'bg-primary-purple-5 lg:border-0'
+            : 'border-black-30 lg:border lg:bg-gray-100',
         )}
       >
         <div className="rounded-[40px]">
@@ -83,7 +83,7 @@ const EnterpriseSection = ({ type }: EnterpriseSectionProps) => {
               </span>
             </div>
           </div>
-          <div className="my-4 text-center text-3xl font-medium lg:text-5xl ">
+          <div className="my-4 text-center text-3xl font-medium lg:text-5xl">
             Carousel for Enterprise
           </div>
           <p className="mt-4 text-center">
@@ -95,7 +95,7 @@ const EnterpriseSection = ({ type }: EnterpriseSectionProps) => {
             quality of deliverables.
           </p>
         </div>
-        <div className="my-10 grid gap-6 lg:grid-cols-4">
+        <div className="my-10 grid gap-3 lg:grid-cols-4 lg:gap-6">
           {SECTIONS.map((section, index) => (
             <div
               className={cn(

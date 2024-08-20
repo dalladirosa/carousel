@@ -27,21 +27,18 @@ const MainFooter = () => {
                 height="40"
               />
             </div>
-            <div className="to mt-2 w-full rounded-md bg-gradient-to-b from-gray-600/30 to-gray-500/30 shadow-[0_0_1px_0_#0000000A,0px_2px_6px_0px_#0000000A,0px_6px_6px_0px_#0000000F] lg:w-fit">
-              <Button
-                className="w-full border-0 p-3.5 text-gray-800 lg:w-fit"
-                variant="outline"
-                asChild
+            <Button
+              variant="secondary"
+              className="mx-auto mt-4 gap-2 rounded-lg border border-gray-600/30 bg-white font-bold text-gray-800 [box-shadow:0px_1px_3px_0px_rgba(0,_0,_0,_0.10),_0px_1px_2px_0px_rgba(0,_0,_0,_0.06)]"
+            >
+              <a
+                href="https://calendly.com/daniel-carouseltech/30-minute-meeting-clone"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <a
-                  href="https://calendly.com/daniel-carouseltech/30-minute-meeting-clone"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Schedule a Demo
-                </a>
-              </Button>
-            </div>
+                Schedule a Demo
+              </a>
+            </Button>
           </div>
           <div className="col-span-3 pt-5 lg:pt-0">
             <div className="text-lg font-bold text-gray-990">Contact Us</div>
@@ -53,13 +50,13 @@ const MainFooter = () => {
                 <div>(917) 794-5500</div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="rounded-lg border border-gray-300 p-1.5 ">
+                <div className="rounded-lg border border-gray-300 p-1.5">
                   <Mail className="size-4 text-gray-800" />
                 </div>
                 <div>founders@usecarousel.com</div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="rounded-lg border border-gray-300 p-1.5 ">
+                <div className="rounded-lg border border-gray-300 p-1.5">
                   <img src="/icons/linkedin.svg" alt="" className="size-4" />
                 </div>
                 <div>Carousel</div>

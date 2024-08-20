@@ -1,8 +1,9 @@
+import Banner from '@/modules/home/banner';
 import type { Metadata } from 'next';
 import { Mulish } from 'next/font/google';
 import React from 'react';
 
-import './globals.css';
+import '../globals.css';
 
 const mulish = Mulish({ subsets: ['latin'] });
 
@@ -18,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={mulish.className}>{children}</body>
+      <body className={mulish.className}>
+        <Banner />
+        {children}
+      </body>
     </html>
   );
 }

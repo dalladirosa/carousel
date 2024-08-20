@@ -38,6 +38,8 @@ const config = {
         black: {
           30: '#E5E7EB',
           90: '#1F2937',
+          95: '#45454A',
+          99: '#0F0F10',
         },
         gray: {
           100: '#F9FAFB',
@@ -54,10 +56,11 @@ const config = {
             5: '#F8F7FF',
             10: '#F1F0FF',
             20: '#D4D0F6',
+            40: '#A9A1ED',
             45: '#F8F7FF',
             50: '#8479E2',
-            70: '#3B28CC',
             60: '#6050D7',
+            70: '#3B28CC',
             80: '#2E1DA4',
           },
           DEFAULT: 'hsl(var(--primary))',
@@ -119,12 +122,33 @@ const config = {
             'offset-distance': '0',
           },
         },
+        'spin-around': {
+          // '0%': {
+          //   transform: 'translateZ(0) rotate(0)',
+          // },
+          // '15%, 35%': {
+          //   transform: 'translateZ(0) rotate(90deg)',
+          // },
+          // '65%, 85%': {
+          //   transform: 'translateZ(0) rotate(270deg)',
+          // },
+          '100%': {
+            // transform: 'translateY(100%)',
+          },
+        },
+        slide: {
+          to: {
+            // transform: 'translate(calc(100cqw - 100%), 0)',
+          },
+        },
       },
       animation: {
         'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-show': 'fade-show 0.5s ease-out',
+        'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear',
+        slide: 'slide var(--speed) ease-in-out infinite alternate',
       },
       gridTemplateColumns: {
         // Simple 16 column grid
