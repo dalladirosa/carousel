@@ -27,6 +27,7 @@ const MainNav = () => {
   const searchParams = useSearchParams();
 
   const [isSticky, setIsSticky] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     let rafId: number | null = null;
@@ -60,116 +61,208 @@ const MainNav = () => {
   console.log({ type: searchParams.get('type'), pathname });
 
   return (
-    <header
-      className={cn(
-        'container sticky top-0 z-[9999] bg-transparent transition-all',
-        isSticky && 'px-0',
-      )}
-    >
-      <nav
+    <>
+      <header
         className={cn(
-          'flex w-full flex-1 flex-row items-center bg-white transition-all',
-          isSticky && scrolled,
+          'container sticky top-0 z-[9999] bg-transparent transition-all',
+          isSticky && 'px-0',
         )}
       >
-        <div className="flex w-full flex-row items-center gap-6">
-          <div className="flex flex-row items-center">
-            <Image
-              src="/icons/carousel.svg"
-              alt="carousel"
-              width={32}
-              height={32}
-              className="mr-1 h-8 w-8"
-            />
-            <h1 className="text-lg font-bold">Carousel</h1>
-          </div>
-          <div className="relative grid w-fit grid-cols-2 items-center justify-center gap-2 overflow-hidden rounded-full bg-gray-100 p-1">
-            <motion.div
-              className={cn(
-                'absolute inset-0 w-1/2 rounded-full bg-primary-purple-10',
-                pathname !== '/' && 'hidden',
-              )}
-              initial={false}
-              animate={{ x: type === 'professional' ? 0 : '100%' }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            />
-            {TABS.map((tab) => (
-              <Link
-                href={tab.url}
-                scroll={false}
-                key={tab.title}
-                className="relative"
-              >
-                <button
-                  className="relative w-full rounded-full px-4 py-[4.5px] text-center"
-                  role="button"
-                  style={{
-                    transformStyle: 'preserve-3d',
-                  }}
+        <nav
+          className={cn(
+            'flex w-full flex-1 flex-row items-center bg-white py-4 transition-all md:py-0',
+            isSticky && scrolled,
+          )}
+        >
+          <div className="flex w-full flex-row items-center gap-6">
+            <div className="flex flex-row items-center">
+              <Image
+                src="/icons/carousel.svg"
+                alt="carousel"
+                width={32}
+                height={32}
+                className="mr-1 h-8 w-8"
+              />
+              <h1 className="text-lg font-bold">Carousel</h1>
+            </div>
+            <div className="relative hidden w-fit grid-cols-2 items-center justify-center gap-2 overflow-hidden rounded-full bg-gray-100 p-1 md:grid">
+              <motion.div
+                className={cn(
+                  'absolute inset-0 w-1/2 rounded-full bg-primary-purple-10',
+                  pathname !== '/' && 'hidden',
+                )}
+                initial={false}
+                animate={{ x: type === 'professional' ? 0 : '100%' }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              />
+              {TABS.map((tab) => (
+                <Link
+                  href={tab.url}
+                  scroll={false}
+                  key={tab.title}
+                  className="relative"
                 >
-                  <motion.p
-                    animate={{
-                      color: type === tab.value ? '#3B28CC' : '#1F2937',
+                  <button
+                    className="relative w-full rounded-full px-4 py-[4.5px] text-center"
+                    role="button"
+                    style={{
+                      transformStyle: 'preserve-3d',
                     }}
-                    transition={{ duration: 0 }}
-                    className="relative z-10 block py-[2.5px] text-base font-bold leading-normal"
                   >
-                    {tab.title}
-                  </motion.p>
-                </button>
-
-                {/*{type === tab.value && (*/}
-                {/*  <motion.div*/}
-                {/*    layoutId="clickedbutton"*/}
-                {/*    transition={{*/}
-                {/*      type: 'spring',*/}
-                {/*      bounce: 0.3,*/}
-                {/*      duration: 0.6,*/}
-                {/*    }}*/}
-                {/*    className="absolute inset-0 rounded-full bg-primary-purple-10"*/}
-                {/*  />*/}
-                {/*)}*/}
-              </Link>
-            ))}
+                    <motion.p
+                      animate={{
+                        color: type === tab.value ? '#3B28CC' : '#1F2937',
+                      }}
+                      transition={{ duration: 0 }}
+                      className="relative z-10 block py-[2.5px] text-base font-bold leading-normal"
+                    >
+                      {tab.title}
+                    </motion.p>
+                  </button>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="flex w-full flex-row items-center justify-end gap-6 transition-all">
-          <div>
-            {isSticky && (
+          <div className="hidden w-full flex-row items-center justify-end gap-6 transition-all md:flex">
+            <div>
+              {isSticky && (
+                <a
+                  className="px-5 text-sm font-bold text-purple-70 transition-all"
+                  href="#"
+                >
+                  Earn $50
+                </a>
+              )}
               <a
                 className="px-5 text-sm font-bold text-purple-70 transition-all"
                 href="#"
               >
-                Earn $50
+                Request Features
               </a>
+              <a
+                className="px-5 text-sm font-bold text-purple-70 transition-all"
+                href="#"
+              >
+                Get Help
+              </a>
+            </div>
+            <div>
+              {type === 'enterprise' && isSticky && (
+                <Button className="mr-3 transition-all">Download</Button>
+              )}
+              <Button variant="outline" className="transition-all">
+                Sign In
+              </Button>
+              {type === 'professional' && isSticky && (
+                <Button className="ml-3 transition-all">Schedule a Demo</Button>
+              )}
+            </div>
+          </div>
+
+          <div
+            className="flex h-6 w-6 flex-col justify-center gap-1 md:hidden"
+            role="button"
+            onClick={() => {
+              setIsOpen((prevState) => {
+                if (!prevState) {
+                  document.body.classList.add('overflow-hidden');
+                } else {
+                  document.body.classList.remove('overflow-hidden');
+                }
+
+                return !prevState;
+              });
+            }}
+          >
+            <div
+              className={cn(
+                'h-0.5 w-full bg-primary-purple-70 transition-all',
+                isOpen && '[transform:_translate3d(0,_3px,_0)_rotate(45deg)]',
+              )}
+            />
+            <div
+              className={cn(
+                'h-0.5 w-full bg-primary-purple-70 transition-all',
+                isOpen && 'hidden',
+              )}
+            />
+            <div
+              className={cn(
+                'h-0.5 w-full bg-primary-purple-70 transition-all',
+                isOpen &&
+                  '[transform:_translate3d(0,_-3px,_0)_rotate(-225deg)]',
+              )}
+            />
+          </div>
+        </nav>
+      </header>
+      <div
+        className={cn(
+          'visible fixed top-0 z-[9998] flex h-dvh w-full flex-col items-center bg-white px-8 pb-8 pt-[10rem] opacity-100 transition-all',
+          !isOpen && 'invisible opacity-0',
+        )}
+      >
+        <div className="relative grid w-full grid-cols-2 items-center justify-center gap-2 overflow-hidden rounded-full bg-gray-100 p-1">
+          <motion.div
+            className={cn(
+              'absolute inset-0 w-1/2 rounded-full bg-primary-purple-10',
+              pathname !== '/' && 'hidden',
             )}
+            initial={false}
+            animate={{ x: type === 'professional' ? 0 : '100%' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          />
+          {TABS.map((tab) => (
+            <Link
+              href={tab.url}
+              scroll={false}
+              key={tab.title}
+              className="relative"
+            >
+              <button
+                className="relative w-full rounded-full px-4 py-[4.5px] text-center"
+                role="button"
+                style={{
+                  transformStyle: 'preserve-3d',
+                }}
+              >
+                <motion.p
+                  animate={{
+                    color: type === tab.value ? '#3B28CC' : '#1F2937',
+                  }}
+                  transition={{ duration: 0 }}
+                  className="relative z-10 block py-[2.5px] text-base font-bold leading-normal"
+                >
+                  {tab.title}
+                </motion.p>
+              </button>
+            </Link>
+          ))}
+        </div>
+        <ul className="my-6 flex flex-col items-center gap-6">
+          <li>
             <a
-              className="px-5 text-sm font-bold text-purple-70 transition-all"
+              className="px-5 text-center text-base font-bold text-purple-70 transition-all"
               href="#"
             >
               Request Features
             </a>
+          </li>
+          <li>
             <a
-              className="px-5 text-sm font-bold text-purple-70 transition-all"
+              className="px-5 text-center text-base font-bold text-purple-70 transition-all"
               href="#"
             >
               Get Help
             </a>
-          </div>
-          <div>
-            {type === 'enterprise' && isSticky && (
-              <Button className="mr-3 transition-all">Download</Button>
-            )}
-            <Button variant="outline" className="transition-all">
-              Sign In
-            </Button>
-            {type === 'professional' && isSticky && (
-              <Button className="ml-3 transition-all">Schedule a Demo</Button>
-            )}
-          </div>
-        </div>
-      </nav>
-    </header>
+          </li>
+        </ul>
+
+        <Button variant="outline" className="mt-auto w-full transition-all">
+          Sign In
+        </Button>
+      </div>
+    </>
   );
 };
 
