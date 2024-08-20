@@ -28,8 +28,6 @@ const MainNav = () => {
 
   const [isSticky, setIsSticky] = useState(false);
 
-  console.log({ pathname });
-
   useEffect(() => {
     let rafId: number | null = null;
     let lastScrollY = window.scrollY;
@@ -54,8 +52,12 @@ const MainNav = () => {
   }, []);
 
   const type = (
-    searchParams.get('type') || pathname === '/' ? 'professional' : pathname
+    searchParams.get('type') === null && pathname === '/'
+      ? 'professional'
+      : pathname
   ) as 'professional' | 'enterprise' | null;
+
+  console.log({ type: searchParams.get('type'), pathname });
 
   return (
     <header
@@ -81,27 +83,30 @@ const MainNav = () => {
             />
             <h1 className="text-lg font-bold">Carousel</h1>
           </div>
-          <div className="flex w-fit flex-row items-center justify-center gap-2 rounded-full bg-gray-100 p-1">
+          <div className="relative grid w-fit grid-cols-2 items-center justify-center gap-2 overflow-hidden rounded-full bg-gray-100 p-1">
+            <motion.div
+              className={cn(
+                'absolute inset-0 w-1/2 rounded-full bg-primary-purple-10',
+                pathname !== '/' && 'hidden',
+              )}
+              initial={false}
+              animate={{ x: type === 'professional' ? 0 : '100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            />
             {TABS.map((tab) => (
-              <Link href={tab.url} scroll={false} key={tab.title}>
+              <Link
+                href={tab.url}
+                scroll={false}
+                key={tab.title}
+                className="relative"
+              >
                 <button
-                  className="rounded-full px-4 py-[4.5px]"
+                  className="relative w-full rounded-full px-4 py-[4.5px] text-center"
                   role="button"
                   style={{
                     transformStyle: 'preserve-3d',
                   }}
                 >
-                  {type === tab.value && (
-                    <motion.div
-                      layoutId="clickedbutton"
-                      transition={{
-                        type: 'spring',
-                        bounce: 0.3,
-                        duration: 0.6,
-                      }}
-                      className="absolute inset-0 rounded-full bg-primary-purple-10"
-                    />
-                  )}
                   <motion.p
                     animate={{
                       color: type === tab.value ? '#3B28CC' : '#1F2937',
@@ -112,6 +117,18 @@ const MainNav = () => {
                     {tab.title}
                   </motion.p>
                 </button>
+
+                {/*{type === tab.value && (*/}
+                {/*  <motion.div*/}
+                {/*    layoutId="clickedbutton"*/}
+                {/*    transition={{*/}
+                {/*      type: 'spring',*/}
+                {/*      bounce: 0.3,*/}
+                {/*      duration: 0.6,*/}
+                {/*    }}*/}
+                {/*    className="absolute inset-0 rounded-full bg-primary-purple-10"*/}
+                {/*  />*/}
+                {/*)}*/}
               </Link>
             ))}
           </div>
