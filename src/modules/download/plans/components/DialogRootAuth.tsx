@@ -1,16 +1,25 @@
 import { Button } from '@/components/ui/button';
 import {
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const DialogRootAuth = () => {
+  const checkData = () => {
+    fetch(
+      'https://app.carouseltech.io/auth/exists?email=demo%40carouseltech.io',
+      { method: 'GET', mode: 'no-cors' },
+    ).then((r) => console.log(r));
+  };
+
+  useEffect(() => {
+    checkData();
+  }, []);
   return (
     <DialogContent isShowCloseButton className="bg-gray-100">
       <DialogHeader className="px-6 py-3">

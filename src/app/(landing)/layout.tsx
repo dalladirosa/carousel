@@ -1,3 +1,4 @@
+import Providers from '@/app/providers';
 import Banner from '@/modules/home/banner';
 import type { Metadata } from 'next';
 import { Mulish } from 'next/font/google';
@@ -21,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={mulish.className}>
         <Banner />
-        {children}
+        <Providers>{children}</Providers>.
       </body>
     </html>
   );

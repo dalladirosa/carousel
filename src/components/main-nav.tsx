@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 const TABS = [
@@ -58,8 +58,6 @@ const MainNav = () => {
       : pathname
   ) as 'professional' | 'enterprise' | null;
 
-  console.log({ type: searchParams.get('type'), pathname });
-
   return (
     <>
       <header
@@ -70,7 +68,7 @@ const MainNav = () => {
       >
         <nav
           className={cn(
-            'flex w-full flex-1 flex-row items-center bg-white py-4 transition-all md:py-0',
+            'flex w-full flex-1 flex-row items-center bg-white py-4 transition-all',
             isSticky && scrolled,
           )}
         >
