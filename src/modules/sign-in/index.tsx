@@ -1,11 +1,6 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
-import {
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import CreateAccountForm from '@/modules/download/plans/components/CreateAccountForm';
@@ -13,7 +8,7 @@ import Auth from '@/networks';
 import { useMutation } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 const STEP = {
@@ -32,7 +27,7 @@ type Inputs = {
   confirmPassword: string;
 };
 
-const DialogRootAuth = () => {
+const SignIn = () => {
   const router = useRouter();
   const [step, setStep] = React.useState<StepType>('CHECK_EMAIL');
 
@@ -57,6 +52,9 @@ const DialogRootAuth = () => {
     }) => {
       return await Auth.signUp(body);
     },
+    onSuccess: () => {
+      setStep(STEP.CHECK_EMAIL);
+    },
   });
 
   const mutateSignIn = useMutation({
@@ -69,8 +67,8 @@ const DialogRootAuth = () => {
 
       router.push('/account');
     },
-    onError: (error) => {
-      console.log(error);
+    onError: (err) => {
+      console.log(err);
     },
   });
 
@@ -91,23 +89,23 @@ const DialogRootAuth = () => {
   };
 
   return (
-    <DialogContent isShowCloseButton className="bg-gray-100">
+    <div className="container flex min-h-[70vh] flex-col sm:items-center sm:justify-center">
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <DialogHeader className="px-6 py-3">
-            <DialogTitle className="text-lg font-bold text-gray-900">
-              Please enter your email address
-            </DialogTitle>
-            <DialogDescription></DialogDescription>
-          </DialogHeader>
-          <div className="flex flex-col gap-y-2.5 px-6 pb-6 pt-3">
+        <form
+          className="mt-8 h-full w-full max-w-screen-sm overflow-hidden sm:mt-0 sm:h-fit sm:rounded-xl sm:border sm:border-gray-300 sm:bg-gray-100"
+          onSubmit={methods.handleSubmit(onSubmit)}
+        >
+          <h1 className="my-4 text-lg font-bold text-gray-900 sm:mx-6">
+            Request a password reset
+          </h1>
+          <div className="flex flex-col gap-3 pb-6 sm:px-6">
             <div>
               <Label
                 htmlFor="email"
                 className="text-xs text-gray-600"
                 data-invalid="false"
               >
-                Email Address
+                Email
               </Label>
               <Input
                 placeholder="user@example.com"
@@ -138,20 +136,26 @@ const DialogRootAuth = () => {
             {step === STEP.EMAIL_NOT_EXSIST && <CreateAccountForm />}
           </div>
 
-          <DialogFooter className="border-t border-gray-300 bg-white px-4 py-3">
+          <div className="flex flex-col gap-3 bg-white py-3 sm:flex-row sm:justify-end sm:border-t sm:border-gray-300 sm:px-4">
             {step === STEP.EMAIL_EXSIST && (
               <Link href="/password-reset">
-                <Button variant="link" className="font-bold">
+                <Button
+                  variant="link"
+                  size="default"
+                  className="w-full font-bold !no-underline sm:w-fit"
+                >
                   Forgot password?
                 </Button>
               </Link>
             )}
-            <Button type="submit">Continue</Button>
-          </DialogFooter>
+            <Button type="submit" className="w-full sm:w-fit">
+              Continue
+            </Button>
+          </div>
         </form>
       </FormProvider>
-    </DialogContent>
+    </div>
   );
 };
 
-export default DialogRootAuth;
+export default SignIn;

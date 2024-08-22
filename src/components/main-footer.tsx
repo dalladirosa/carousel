@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Copyright, Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
@@ -5,7 +7,7 @@ import React from 'react';
 
 const MainFooter = () => {
   return (
-    <section className="bg-gray-200">
+    <section className="w-full bg-gray-200">
       <div className="container px-8 lg:px-0 xl:max-w-6xl">
         <div className="grid py-10 lg:grid-cols-12">
           <div className="col-span-9">

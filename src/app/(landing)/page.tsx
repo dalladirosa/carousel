@@ -1,5 +1,6 @@
 'use client';
 
+import { getQueryClient } from '@/app/get-query-client';
 import MainFooter from '@/components/main-footer';
 import MainNav from '@/components/main-nav';
 import ProtectedSection from '@/components/protected-section';
@@ -11,6 +12,7 @@ import HeroSection from '@/modules/home/hero';
 import ReviewSection from '@/modules/home/review';
 import SecuritySection from '@/modules/home/security';
 import SolutionsSection from '@/modules/home/solutions';
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 
 // const FAQS = [
@@ -360,8 +362,10 @@ import React, { Suspense, useEffect, useRef, useState } from 'react';
 // };
 
 export default function Home() {
+  const queryClient = getQueryClient();
+
   return (
-    <Suspense>
+    <HydrationBoundary state={dehydrate(queryClient)}>
       {/*<div className="p-8">*/}
       {/*  <div className="border-black flex h-[500px] w-[500px] border">*/}
       {/*    <div className="test-10 flex h-full w-full self-stretch">*/}
@@ -428,6 +432,6 @@ export default function Home() {
       </main>
 
       <MainFooter />
-    </Suspense>
+    </HydrationBoundary>
   );
 }

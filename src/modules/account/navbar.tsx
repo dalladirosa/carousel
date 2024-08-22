@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { useAuthContext } from '@/context/AuthContext';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -10,6 +11,7 @@ const scrolled =
   'shadow-[0px_24px_32px_0px_rgba(0,0,0,0.08),0px_16px_24px_0px_rgba(0,0,0,0.06),0px_4px_8px_0px_rgba(0,0,0,0.04),0px_0px_1px_0px_rgba(0,0,0,0.04)] px-8 py-3 rounded-full mt-6';
 
 const Navbar = () => {
+  const { isAuthenticated } = useAuthContext();
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {

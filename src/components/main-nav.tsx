@@ -1,4 +1,7 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
+import { useAuthContext } from '@/context/AuthContext';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -25,6 +28,8 @@ const scrolled =
 const MainNav = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const { isAuthenticated, signOut } = useAuthContext();
 
   const [isSticky, setIsSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -148,9 +153,20 @@ const MainNav = () => {
               {type === 'enterprise' && isSticky && (
                 <Button className="mr-3 transition-all">Download</Button>
               )}
-              <Button variant="outline" className="transition-all">
-                Sign In
-              </Button>
+              {isAuthenticated ? (
+                <Button
+                  variant="outline"
+                  className="transition-all"
+                  onClick={signOut}
+                >
+                  Sign Out
+                </Button>
+              ) : (
+                <Button variant="outline" className="transition-all">
+                  Sign In
+                </Button>
+              )}
+
               {type === 'professional' && isSticky && (
                 <Button className="ml-3 transition-all">Schedule a Demo</Button>
               )}
@@ -256,9 +272,19 @@ const MainNav = () => {
           </li>
         </ul>
 
-        <Button variant="outline" className="mt-auto w-full transition-all">
-          Sign In
-        </Button>
+        {isAuthenticated ? (
+          <Button
+            variant="outline"
+            className="mt-auto w-full transition-all"
+            onClick={signOut}
+          >
+            Sign Out
+          </Button>
+        ) : (
+          <Button variant="outline" className="mt-auto w-full transition-all">
+            Sign In
+          </Button>
+        )}
       </div>
     </>
   );
