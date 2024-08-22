@@ -24,9 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={mulish.className}>
         <Banner />
-        <Providers>
-          <AuthProvider>{children}</AuthProvider>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

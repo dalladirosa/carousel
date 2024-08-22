@@ -1,5 +1,6 @@
 'use client';
 
+import { login } from '@/actions/login';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -72,13 +73,13 @@ const SignIn = () => {
     },
   });
 
-  const onSubmit = (data: Inputs) => {
+  const onSubmit = async (data: Inputs) => {
     if (step === STEP.CHECK_EMAIL) mutateCheck.mutate({ email: data.email });
     else if (step === STEP.EMAIL_EXSIST) {
       const formData = new FormData();
       formData.set('username', data.email);
       formData.set('password', data.password);
-      mutateSignIn.mutate(formData);
+      await login(data.email, data.password);
     } else if (step === STEP.EMAIL_NOT_EXSIST)
       mutateSignUp.mutate({
         email: data.email,
